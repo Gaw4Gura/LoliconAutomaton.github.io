@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>UESTC数据结构专题 我的题面最简单，快来做！ | LoliconAutomaton&#39;s RabbitHouse</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Overview有一天和HeRaNO聊天的时候他突然说一个数据结构题调了他三个小时没调出来，然后恰好那个题被敝校一位潜入UESTC ICPC群里的队员拿出来问，觉得很好，就去做了一下。 题意题目链接  0 l r a k p：在$[l, r]$这一段加上两个等差数列，以$p - L + 1$为界 1 l r：询问$[l, r]$中最长的等差连续子序列  题解直接看操作一并不复杂，直接用线段树区间加">
+<meta name="keywords" content="差分,线段树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UESTC数据结构专题 我的题面最简单，快来做！">
+<meta property="og:url" content="http://loliconautomaton.github.io/UESTC1/index.html">
+<meta property="og:site_name" content="LoliconAutomaton&#39;s RabbitHouse">
+<meta property="og:description" content="Overview有一天和HeRaNO聊天的时候他突然说一个数据结构题调了他三个小时没调出来，然后恰好那个题被敝校一位潜入UESTC ICPC群里的队员拿出来问，觉得很好，就去做了一下。 题意题目链接  0 l r a k p：在$[l, r]$这一段加上两个等差数列，以$p - L + 1$为界 1 l r：询问$[l, r]$中最长的等差连续子序列  题解直接看操作一并不复杂，直接用线段树区间加">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-22T15:28:34.681Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UESTC数据结构专题 我的题面最简单，快来做！">
+<meta name="twitter:description" content="Overview有一天和HeRaNO聊天的时候他突然说一个数据结构题调了他三个小时没调出来，然后恰好那个题被敝校一位潜入UESTC ICPC群里的队员拿出来问，觉得很好，就去做了一下。 题意题目链接  0 l r a k p：在$[l, r]$这一段加上两个等差数列，以$p - L + 1$为界 1 l r：询问$[l, r]$中最长的等差连续子序列  题解直接看操作一并不复杂，直接用线段树区间加">
+  
+    <link rel="alternative" href="/" title="LoliconAutomaton&#39;s RabbitHouse" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]--><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+</head></html>
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">LoliconAutomaton&#39;s RabbitHouse</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">万念俱灰也是一种超脱——木心</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name="tn" type="hidden" value="bds">
+          <input name="cl" type="hidden" value="3">
+          <input name="ct" type="hidden" value="2097152">
+          <input type="hidden" name="si" value="loliconautomaton.github.io">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-UESTC1" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/UESTC1/" class="article-date">
+  <time datetime="2019-07-22T15:11:01.540Z" itemprop="datePublished">2019-07-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      UESTC数据结构专题 我的题面最简单，快来做！
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>有一天和HeRaNO聊天的时候他突然说一个数据结构题调了他三个小时没调出来，然后恰好那个题被敝校一位潜入UESTC ICPC群里的队员拿出来问，觉得很好，就去做了一下。</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p><a href="https://acm.uestc.edu.cn/problem/wo-de-ti-mian-zui-jian-dan-kuai-lai-zuo/description" target="_blank" rel="noopener">题目链接</a></p>
+<ul>
+<li><code>0 l r a k p</code>：在$[l, r]$这一段加上两个等差数列，以$p - L + 1$为界</li>
+<li><code>1 l r</code>：询问$[l, r]$中最长的等差连续子序列</li>
+</ul>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>直接看操作一并不复杂，直接用线段树区间加分两段计算lazy tag就行了，但是直接维护原序列对于操作二来说没什么好方法。<br>再单独看操作二，对于等差数列的处理一般是差分一次之后找相同的连续一段，或者是差分两次之后找连续的一段0.但是如果是离线的差分操作又不好维护操作一。<br>因此想到了<del>题解</del>线段树维护差分数组。这里选择两次差分（NWPU_zhaoyiping力荐）：<br>维护差分数组$cnt_i$，表示位置$i$上的差分标记，对于操作一可以转化成下面几个标记：</p>
+<ul>
+<li>$cnt_l += a, cnt_{l + 1} -= a$</li>
+<li>$cnt_{l + 1} += k, cnt_{p + 1} -= k$</li>
+<li>$cnt_{p + 1} -= k, cnt_{r + 1} += k$</li>
+<li>$cnt_{r + 1} += -a - k(2p - l - r), cnt_{r + 2} -= -a - k(2p - l - r)$</li>
+</ul>
+<p>由于端点有差分标记，因此考虑维护$(l, r)$内的答案，结果加上端点即可。维护连续一段0的方法是分治，分别维护左边一段的答案、右边一段的答案以及整段的答案。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, op, l, r;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a, k, p, cnt[N];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">segNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> lmost, rmost, most;</span><br><span class="line">    <span class="keyword">int</span>             lo, ro;</span><br><span class="line">    segNode() &#123; lmost = rmost = most = lo = ro = <span class="number">0</span>; &#125;</span><br><span class="line">    segNode(<span class="keyword">int</span> lm, <span class="keyword">int</span> rm, <span class="keyword">int</span> m, <span class="keyword">int</span> lo, <span class="keyword">int</span> ro) : lmost(lm), rmost(rm), most(m), lo(lo), ro(ro) &#123;&#125;</span><br><span class="line">&#125; segv[N &lt;&lt; <span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">segNode <span class="keyword">operator</span>+(<span class="keyword">const</span> segNode&amp; x, <span class="keyword">const</span> segNode&amp; y) &#123;</span><br><span class="line">        segNode ret;</span><br><span class="line">        ret.lmost = x.lmost;</span><br><span class="line">        <span class="keyword">if</span> (x.ro - x.lo + <span class="number">1</span> == x.most) ret.lmost = x.most + y.lmost;</span><br><span class="line">        ret.rmost = y.rmost;</span><br><span class="line">        <span class="keyword">if</span> (y.ro - y.lo + <span class="number">1</span> == y.most) ret.rmost = y.most + x.rmost;</span><br><span class="line">        ret.most = max(ret.lmost, ret.rmost);</span><br><span class="line">        ret.most = max(ret.most, max(x.most, y.most));</span><br><span class="line">        ret.most = max(ret.most, x.rmost + y.lmost);</span><br><span class="line">        ret.lo = x.lo, ret.ro = y.ro;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> o, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (L == R) &#123;</span><br><span class="line">        segv[o] = segNode(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, L, R);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> M = (L + R) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    build(o &lt;&lt; <span class="number">1</span>, L, M);</span><br><span class="line">    build (o &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, M + <span class="number">1</span>, R);</span><br><span class="line">    segv[o] = segv[o &lt;&lt; <span class="number">1</span>] + segv[o &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> o, <span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (L == R) &#123;</span><br><span class="line">        segv[o] = (cnt[p] == <span class="number">0</span>) ? segNode(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, L, R) : segNode(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, L, R);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> M = (L + R) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (p &lt;= M) update(o &lt;&lt; <span class="number">1</span>, L, M, p);</span><br><span class="line">    <span class="keyword">else</span> update(o &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, M + <span class="number">1</span>, R, p);</span><br><span class="line">    segv[o] = segv[o &lt;&lt; <span class="number">1</span>] + segv[o &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> segNode <span class="title">query</span><span class="params">(<span class="keyword">int</span> o, <span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (L == l &amp;&amp; R == r) <span class="keyword">return</span> segv[o];</span><br><span class="line">    <span class="keyword">int</span> M = (L + R) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (l &gt; M) <span class="keyword">return</span> query(o &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, M + <span class="number">1</span>, R, l, r);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (r &lt;= M) <span class="keyword">return</span> query(o &lt;&lt; <span class="number">1</span>, L, M, l, r);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> query(o &lt;&lt; <span class="number">1</span>, L, M, l, M) + query(o &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, M + <span class="number">1</span>, R, M + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    build(<span class="number">1</span>, <span class="number">1</span>, n + <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;op, &amp;l, &amp;r);</span><br><span class="line">        <span class="keyword">if</span> (op == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>, &amp;a, &amp;k, &amp;p);</span><br><span class="line">            cnt[l] += a, cnt[l + <span class="number">1</span>] -= a;</span><br><span class="line">            cnt[l + <span class="number">1</span>] += k, cnt[p + <span class="number">1</span>] -= k * <span class="number">2L</span>L;</span><br><span class="line">            cnt[r + <span class="number">1</span>] += k - a - k * (p * <span class="number">2L</span>L - l - r);</span><br><span class="line">            cnt[r + <span class="number">2</span>] -= -a - k * (p * <span class="number">2L</span>L - l - r);</span><br><span class="line">            update(<span class="number">1</span>, <span class="number">1</span>, n + <span class="number">2</span>, l);</span><br><span class="line">            update(<span class="number">1</span>, <span class="number">1</span>, n + <span class="number">2</span>, l + <span class="number">1</span>);</span><br><span class="line">            update(<span class="number">1</span>, <span class="number">1</span>, n + <span class="number">2</span>, p + <span class="number">1</span>);</span><br><span class="line">            update(<span class="number">1</span>, <span class="number">1</span>, n + <span class="number">2</span>, r + <span class="number">1</span>);</span><br><span class="line">            update(<span class="number">1</span>, <span class="number">1</span>, n + <span class="number">2</span>, r + <span class="number">2</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (r - l &lt;= <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, r - l + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, query(<span class="number">1</span>, <span class="number">1</span>, n + <span class="number">2</span>, l + <span class="number">2</span>, r).most + <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://loliconautomaton.github.io/UESTC1/" data-id="cjyekwlnm001qqku7jfdm6y89" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/差分/">差分</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线段树/">线段树</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/LOJ6682命题报告/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">LOJ6682命题报告 &amp;&amp; min_25筛总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<!-- LiveRe City install code -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MTk5Ni8xODU0Mw==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
+</div>
+<!-- completed City install code -->
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ACG/">ACG</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/AtCoder/">AtCoder</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/BZOJ/">BZOJ</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CodeChef/">CodeChef</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Codeforces/">Codeforces</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hello-world/">Hello, world!</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Regional/">Regional</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UOJ/">UOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/冻态硅化/">冻态硅化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/分块/">分块</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/奶牛题/">奶牛题</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/寒假作业/">寒假作业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数论/">数论</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文学/">文学</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂文/">杂文</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/游记/">游记</a><span class="category-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BZOJ/">BZOJ</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDQ分治/">CDQ分治</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CodeChef/">CodeChef</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Codeforces/">Codeforces</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hello/">Hello</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP/">KMP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LCA/">LCA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regional/">Regional</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UOJ/">UOJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kNN/">kNN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/min-25筛/">min_25筛</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/">set</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/书评/">书评</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分答案/">二分答案</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/冻态硅化/">冻态硅化</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/出题/">出题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分块/">分块</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分/">差分</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/平衡树/">平衡树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/影评/">影评</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/思维/">思维</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打表/">打表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数论/">数论</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日常/">日常</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时评/">时评</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力/">暴力</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/期望/">期望</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/构造/">构造</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树/">树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/毒瘤/">毒瘤</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游记/">游记</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/滑动窗口/">滑动窗口</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/番剧/">番剧</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社会/">社会</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/离散化/">离散化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/积性函数/">积性函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线段树/">线段树</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/组合数学/">组合数学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/置换/">置换</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莫比乌斯反演/">莫比乌斯反演</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莫队算法/">莫队算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BZOJ/" style="font-size: 12px;">BZOJ</a> <a href="/tags/CDQ分治/" style="font-size: 10px;">CDQ分治</a> <a href="/tags/CodeChef/" style="font-size: 10px;">CodeChef</a> <a href="/tags/Codeforces/" style="font-size: 20px;">Codeforces</a> <a href="/tags/Hello/" style="font-size: 10px;">Hello</a> <a href="/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Regional/" style="font-size: 10px;">Regional</a> <a href="/tags/UOJ/" style="font-size: 10px;">UOJ</a> <a href="/tags/kNN/" style="font-size: 10px;">kNN</a> <a href="/tags/min-25筛/" style="font-size: 10px;">min_25筛</a> <a href="/tags/set/" style="font-size: 10px;">set</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/二分答案/" style="font-size: 12px;">二分答案</a> <a href="/tags/冻态硅化/" style="font-size: 16px;">冻态硅化</a> <a href="/tags/出题/" style="font-size: 10px;">出题</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/差分/" style="font-size: 14px;">差分</a> <a href="/tags/平衡树/" style="font-size: 10px;">平衡树</a> <a href="/tags/影评/" style="font-size: 12px;">影评</a> <a href="/tags/思维/" style="font-size: 12px;">思维</a> <a href="/tags/打表/" style="font-size: 10px;">打表</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/日常/" style="font-size: 10px;">日常</a> <a href="/tags/时评/" style="font-size: 10px;">时评</a> <a href="/tags/暴力/" style="font-size: 10px;">暴力</a> <a href="/tags/期望/" style="font-size: 10px;">期望</a> <a href="/tags/构造/" style="font-size: 12px;">构造</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 10px;">模拟</a> <a href="/tags/毒瘤/" style="font-size: 10px;">毒瘤</a> <a href="/tags/游记/" style="font-size: 18px;">游记</a> <a href="/tags/滑动窗口/" style="font-size: 12px;">滑动窗口</a> <a href="/tags/番剧/" style="font-size: 14px;">番剧</a> <a href="/tags/社会/" style="font-size: 10px;">社会</a> <a href="/tags/离散化/" style="font-size: 10px;">离散化</a> <a href="/tags/积性函数/" style="font-size: 10px;">积性函数</a> <a href="/tags/线段树/" style="font-size: 12px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 10px;">组合数学</a> <a href="/tags/置换/" style="font-size: 10px;">置换</a> <a href="/tags/莫比乌斯反演/" style="font-size: 10px;">莫比乌斯反演</a> <a href="/tags/莫队算法/" style="font-size: 10px;">莫队算法</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019.07</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019.06</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019.05</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019.04</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019.03</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2019.02</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019.01</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/UESTC1/">UESTC数据结构专题 我的题面最简单，快来做！</a>
+          </li>
+        
+          <li>
+            <a href="/LOJ6682命题报告/">LOJ6682命题报告 &amp;&amp; min_25筛总结</a>
+          </li>
+        
+          <li>
+            <a href="/赵队筛/">赵队筛 &amp;&amp; 线性筛gcd(i, n)</a>
+          </li>
+        
+          <li>
+            <a href="/kNN_1/">k-邻近算法（一）</a>
+          </li>
+        
+          <li>
+            <a href="/AGC028B/">AGC028B Removing Blocks</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="https://zhuanlan.zhihu.com/galahad" target="_blank">笔者知乎</a>
+          </li>
+        
+          <li>
+            <a href="http://blog.flyinthesky.win/" target="_blank">FlyInTheSky</a>
+          </li>
+        
+          <li>
+            <a href="https://isecloud.github.io/" target="_blank">isecloud</a>
+          </li>
+        
+          <li>
+            <a href="https://herano.github.io/" target="_blank">HeRaNO@UESTC</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+  
+    <div>
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="86" src="//music.163.com/outchain/player?type=2&id=490182455&auto=1&height=66"></iframe>
+    </div>
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 LoliconAutomaton<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a><br>
+      
+      <span id="busuanzi_container_site_pv">
+          总访问量 <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_pv"></span></a> 次
+        </span>
+        <span id="busuanzi_container_site_uv">
+          <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_uv"></span></a> 人.
+        </span>
+        
+        
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"></a>
+</div>
+
+<!-- totop end -->
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

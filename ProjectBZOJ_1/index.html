@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>Project BZOJ Day1 | LoliconAutomaton&#39;s RabbitHouse</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Overview虽然很想复习预习电路基础，但是由于一不小心手贱点开了题，于是就开始做了。加上之前省赛被虐，决定好好跟着hzwer的blog刷题。 Day1 习题集BZOJ1601 &amp;amp;&amp;amp; Luogu P1550Please contact lydsy2012@163.com!题意：打一口井需要$a_i$元，连通井$i,j$需要$W_{i,j}$元，问使所有井连通的最小花费题解：单单考">
+<meta name="keywords" content="BZOJ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Project BZOJ Day1">
+<meta property="og:url" content="http://loliconautomaton.github.io/ProjectBZOJ_1/index.html">
+<meta property="og:site_name" content="LoliconAutomaton&#39;s RabbitHouse">
+<meta property="og:description" content="Overview虽然很想复习预习电路基础，但是由于一不小心手贱点开了题，于是就开始做了。加上之前省赛被虐，决定好好跟着hzwer的blog刷题。 Day1 习题集BZOJ1601 &amp;amp;&amp;amp; Luogu P1550Please contact lydsy2012@163.com!题意：打一口井需要$a_i$元，连通井$i,j$需要$W_{i,j}$元，问使所有井连通的最小花费题解：单单考">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-05T15:54:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Project BZOJ Day1">
+<meta name="twitter:description" content="Overview虽然很想复习预习电路基础，但是由于一不小心手贱点开了题，于是就开始做了。加上之前省赛被虐，决定好好跟着hzwer的blog刷题。 Day1 习题集BZOJ1601 &amp;amp;&amp;amp; Luogu P1550Please contact lydsy2012@163.com!题意：打一口井需要$a_i$元，连通井$i,j$需要$W_{i,j}$元，问使所有井连通的最小花费题解：单单考">
+  
+    <link rel="alternative" href="/" title="LoliconAutomaton&#39;s RabbitHouse" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]--><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+</head></html>
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">LoliconAutomaton&#39;s RabbitHouse</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">万念俱灰也是一种超脱——木心</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name="tn" type="hidden" value="bds">
+          <input name="cl" type="hidden" value="3">
+          <input name="ct" type="hidden" value="2097152">
+          <input type="hidden" name="si" value="loliconautomaton.github.io">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-ProjectBZOJ_1" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/ProjectBZOJ_1/" class="article-date">
+  <time datetime="2019-06-05T15:54:30.000Z" itemprop="datePublished">2019-06-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/BZOJ/">BZOJ</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Project BZOJ Day1
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>虽然很想<del>复习</del>预习电路基础，但是由于一不小心手贱点开了题，于是就开始做了。加上之前省赛被虐，决定好好跟着hzwer的blog刷题。</p>
+<h3 id="Day1-习题集"><a href="#Day1-习题集" class="headerlink" title="Day1 习题集"></a>Day1 习题集</h3><h4 id="BZOJ1601-amp-amp-Luogu-P1550"><a href="#BZOJ1601-amp-amp-Luogu-P1550" class="headerlink" title="BZOJ1601 &amp;&amp; Luogu P1550"></a>BZOJ1601 &amp;&amp; Luogu P1550</h4><p><a href="https://www.luogu.org/problemnew/show/P1550" target="_blank" rel="noopener">Please contact lydsy2012@163.com!</a><br>题意：打一口井需要$a_i$元，连通井$i,j$需要$W_{i,j}$元，问使所有井连通的最小花费<br>题解：单单考虑连通两个井的话就是裸的MST，但是考虑到图上既有点权又有边权，因此很不方便。这里就会用到增加超级源的思想。新建一个虚拟结点$S’$，从$S’$向点$i$引一条边权是$a_i$的边，这样原问题就转化成了一个MST问题<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 330</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, a[N], W[N][N];</span><br><span class="line"><span class="keyword">int</span> tot, u[N * N], v[N * N], w[N * N], r[N * N], fa[N * N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">return</span> x == fa[x] ? x : fa[x] = find(fa[x]); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">        u[++tot] = <span class="number">0</span>, v[tot] = i, w[tot] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++j) &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; W[i][j];</span><br><span class="line">            <span class="keyword">if</span> (i == j) <span class="keyword">continue</span>;</span><br><span class="line">            u[++tot] = i, v[tot] = j, w[tot] = W[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= tot; ++i) fa[i] = i, r[i] = i;</span><br><span class="line">    sort(r, r + tot + <span class="number">1</span>, [](<span class="keyword">int</span> i, <span class="keyword">int</span> j) &#123; <span class="keyword">return</span> w[i] &lt; w[j]; &#125;);</span><br><span class="line">    <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= tot; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> e = r[i], x = find(u[e]), y = find(v[e]);</span><br><span class="line">        <span class="keyword">if</span> (x != y) &#123;</span><br><span class="line">            fa[x] = y;</span><br><span class="line">            ret += w[e];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ret &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="BZOJ1224-amp-amp-HNOI2002彩票"><a href="#BZOJ1224-amp-amp-HNOI2002彩票" class="headerlink" title="BZOJ1224 &amp;&amp; HNOI2002彩票"></a>BZOJ1224 &amp;&amp; HNOI2002彩票</h4><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1224" target="_blank" rel="noopener">题目链接</a><br>题意：有$1\dots M$这$M$个数，你需要从中选出$N$个数$a_1\dots a_n$，问有多少方案使得$\sum\limits_{i=1}^{n}\frac{1}{a_i}=\frac{X}{Y}$.<br>题解：一开始想着直接枚举子集，顺便了解到了下面这个枚举大小是$k$子集的方法：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i &lt;- <span class="number">2</span> ^ k - <span class="number">1</span> to <span class="number">2</span> ^ n - <span class="number">1</span> <span class="keyword">do</span></span><br><span class="line">    <span class="comment">// put your codes here</span></span><br><span class="line">    x &lt;- i &amp; -i, y &lt;- i + x</span><br><span class="line">    i &lt;- (((i &amp; ~y) / x) &gt;&gt; <span class="number">1</span>) | y</span><br></pre></td></tr></table></figure></p>
+<p>并且了解到了<code>1 &lt;&lt; i</code>这个表达式默认的1是<code>int</code>的，因此会溢出。改完bug一交然后就愉快地超时了，仔细一想一共有$m\choose n$种选法不超时才怪。然后了解到了一种dfs的剪枝方法：假设当前已经选了$used$个数，并且在原序列的$step$位置，那么我们考虑剩下的取法中最大和最小的两种取法，如果最小的取法过大或者最大的取法过小就直接剪枝，效果拔群<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 55</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> eps 1e-10</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, x, y, ret;</span><br><span class="line"><span class="keyword">double</span> goal, sum[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> step, <span class="keyword">int</span> used, <span class="keyword">double</span> val)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (val + sum[step + (n - used) - <span class="number">1</span>] - sum[step - <span class="number">1</span>] - goal &lt; -eps) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (val + sum[m] - sum[m - (n - used)] - goal &gt; eps) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (used == n) &#123; ++ret; <span class="keyword">return</span>; &#125;</span><br><span class="line">    dfs(step + <span class="number">1</span>, used, val);</span><br><span class="line">    dfs(step + <span class="number">1</span>, used + <span class="number">1</span>, val + <span class="number">1.0</span> / step);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; x &gt;&gt; y; goal = <span class="number">1.0</span> * x / y;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) sum[i] = sum[i - <span class="number">1</span>] + <span class="number">1.0</span> / i;</span><br><span class="line">    dfs(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0.0</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ret &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="BZOJ1192-amp-amp-HNOI2006-鬼谷子的钱袋"><a href="#BZOJ1192-amp-amp-HNOI2006-鬼谷子的钱袋" class="headerlink" title="BZOJ1192 &amp;&amp; HNOI2006 鬼谷子的钱袋"></a>BZOJ1192 &amp;&amp; HNOI2006 鬼谷子的钱袋</h4><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1192" target="_blank" rel="noopener">题目链接</a><br>题意：找一组最小的基来表示$1\dots m$这$m$个数<br>题解：省选题中的一股清流……稍加模拟可以得到前几个数是<code>1 2 4 8</code>，考虑到$2^k$可以组成任何表示范围内的数，因此答案其实就是$\log_2{n}$向上取整<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; m;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ret;</span><br><span class="line">    <span class="keyword">for</span> (ret = <span class="number">0</span>; (<span class="number">1</span> &lt;&lt; (ret + <span class="number">1</span>)) &lt; m; ++ret);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ret + <span class="number">1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="BZOJ1191-amp-amp-HNOI2006-超级英雄Hero"><a href="#BZOJ1191-amp-amp-HNOI2006-超级英雄Hero" class="headerlink" title="BZOJ1191 &amp;&amp; HNOI2006 超级英雄Hero"></a>BZOJ1191 &amp;&amp; HNOI2006 超级英雄Hero</h4><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1191" target="_blank" rel="noopener">题目链接</a><br>题意：有$m$个问题，每个问题都可以选择$0\dots n-1$这$n$个锦囊中的一个，每个锦囊只能用一次，问最多可以回答几个问题。其中要求做完一个题才能下一个<br>题解：很像西安邀请赛的D。一开始想的是树的最大独立集，但是由于多个问题可以用同一个锦囊，因此是会产生环的，于是就想到二分图最大匹配<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, vis[N], T[N], G[N][N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (G[u][i] == <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span> (vis[i]) <span class="keyword">continue</span>;</span><br><span class="line">        vis[i] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (T[i] == <span class="number">-1</span> || dfs(T[i])) &#123;</span><br><span class="line">            T[i] = u;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, u, v; i &lt; m; ++i) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; u &gt;&gt; v;</span><br><span class="line">        G[i][u] = G[i][v] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memset</span>(T, <span class="number">-1</span>, <span class="keyword">sizeof</span>(T));</span><br><span class="line">    <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</span><br><span class="line">        <span class="keyword">if</span> (dfs(i)) ++ret;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ret &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>发现自己准备NOIP的时候默写的Hungary算法的板子就是一坨屎，各种错。</p>
+<h4 id="BZOJ1059-amp-amp-ZJOI2009-矩阵游戏"><a href="#BZOJ1059-amp-amp-ZJOI2009-矩阵游戏" class="headerlink" title="BZOJ1059 &amp;&amp; ZJOI2009 矩阵游戏"></a>BZOJ1059 &amp;&amp; ZJOI2009 矩阵游戏</h4><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1059" target="_blank" rel="noopener">题目链接</a><br>题意：问一个矩阵能否经过若干行列交换使得主对角线都是1<br>题解：其实问题就是找$n$个不同行/列的1.当然我没有想到这个可以用二分图匹配做，还是题目做少了<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 220</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> kase, n, vis[N], T[N], G[N][N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (G[u][i] == <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span> (vis[i]) <span class="keyword">continue</span>;</span><br><span class="line">        vis[i] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (T[i] == <span class="number">-1</span> || dfs(T[i])) &#123;</span><br><span class="line">            T[i] = u;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; kase;</span><br><span class="line">    <span class="keyword">while</span> (kase--) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++j)</span><br><span class="line">                <span class="built_in">cin</span> &gt;&gt; G[i][j];</span><br><span class="line">        <span class="built_in">memset</span>(T, <span class="number">-1</span>, <span class="keyword">sizeof</span>(T));</span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</span><br><span class="line">            <span class="keyword">if</span> (dfs(i)) ++ret;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (ret == n) <span class="built_in">cout</span> &lt;&lt; <span class="string">"Yes"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"No"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="BZOJ1202-amp-amp-HNOI2005-狡猾的商人"><a href="#BZOJ1202-amp-amp-HNOI2005-狡猾的商人" class="headerlink" title="BZOJ1202 &amp;&amp; HNOI2005 狡猾的商人"></a>BZOJ1202 &amp;&amp; HNOI2005 狡猾的商人</h4><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1202" target="_blank" rel="noopener">题目链接</a><br>题意：给你一个账本问你记账是否正确<br>题解：很容易想到对于区间$I_1+I_2=I$，检验一下正确性就可以了。但其实还有很多情况。写着写着发现自己在用暴力写省选题2333.然后想了半个小时没忍住去看了题解，发现是个不可多得的好题，那个并查集的做法我没有看懂，不过看着非常巧妙。差分约束的做法没有想到一方面是题目里只有等于的关系，另外一方面是题目做少了。考虑用前缀和去验证（因此一开始我想过用线段树做这个题），也就是拆成$V_Y-V_{X-1}=W$，在数学中等于的关系可以拆成下面两个不等式：<br>$\left\{\begin{array}{lr} V_Y-V_{X-1}\le W \\ V_Y-V_{X-1}\ge W \end{array}\right.$<br>把下面那个式子乘上-1，就变成经典的差分约束问题了，真的是不可多得的好题<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> T, n, m;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> to, nxt, w;</span><br><span class="line">    Edge(<span class="keyword">void</span>) &#123;&#125;</span><br><span class="line">    Edge(<span class="keyword">const</span> <span class="keyword">int</span>&amp; to, <span class="keyword">const</span> <span class="keyword">int</span>&amp; nxt, <span class="keyword">const</span> <span class="keyword">int</span>&amp; w) : to(to), nxt(nxt), w(w) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Differ</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> tot, head[N];</span><br><span class="line">    <span class="keyword">int</span> d[N], cnt[N];</span><br><span class="line">    <span class="keyword">bool</span> inq[N];</span><br><span class="line">    Edge e[N &lt;&lt; <span class="number">2</span>];</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        tot = <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">memset</span>(head, <span class="number">0</span>, <span class="keyword">sizeof</span>(head));</span><br><span class="line">        <span class="built_in">memset</span>(cnt, <span class="number">0</span>, <span class="keyword">sizeof</span>(cnt));</span><br><span class="line">        <span class="built_in">memset</span>(inq, <span class="number">0</span>, <span class="keyword">sizeof</span>(inq));</span><br><span class="line">        <span class="built_in">memset</span>(d, <span class="number">0x3f</span>, <span class="keyword">sizeof</span>(d));</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">AddEdge</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; u, <span class="keyword">const</span> <span class="keyword">int</span>&amp; v, <span class="keyword">const</span> <span class="keyword">int</span>&amp; diff)</span> </span>&#123;</span><br><span class="line">        e[tot] = Edge(v, head[u], diff), head[u] = tot++;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">SPFA</span><span class="params">(<span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">        d[s] = <span class="number">0</span>, inq[s] = <span class="number">1</span>; q.push(s);</span><br><span class="line">        <span class="keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> u = q.front(); q.pop();</span><br><span class="line">            inq[u] = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; i; i = e[i].nxt) &#123;</span><br><span class="line">                <span class="keyword">int</span> v = e[i].to;</span><br><span class="line">                <span class="keyword">if</span> (d[v] &gt; d[u] + e[i].w) &#123;</span><br><span class="line">                    d[v] = d[u] + e[i].w;</span><br><span class="line">                    <span class="keyword">if</span> (++cnt[v] &gt;= n) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">if</span> (!inq[v]) &#123;</span><br><span class="line">                        inq[v] = <span class="literal">true</span>;</span><br><span class="line">                        q.push(v);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; opt;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; T;</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m; opt.init();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, u, v, w; i &lt;= m; ++i) &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; u &gt;&gt; v &gt;&gt; w;</span><br><span class="line">            opt.AddEdge(u - <span class="number">1</span>, v, w);</span><br><span class="line">            opt.AddEdge(v, u - <span class="number">1</span>, -w);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n; i; --i) opt.AddEdge(n + <span class="number">1</span>, i, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> (opt.SPFA(n + <span class="number">1</span>)) <span class="built_in">cout</span> &lt;&lt; <span class="string">"true"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"false"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>痛感自己刷题过少，这也是从OI阶段遗留下来的问题。接下来必须要好好利用网上的资源了。<br>另外最近在群里看300iq从一个俄罗斯人被带成一个中国网民，深感中国网络文化的渗透力。</p>
+
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://loliconautomaton.github.io/ProjectBZOJ_1/" data-id="cjyekwlng001fqku73sfqvnok" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BZOJ/">BZOJ</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/浅探莫比乌斯反演/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          浅探莫比乌斯反演
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019陕西省赛游记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">2019陕西游记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<!-- LiveRe City install code -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MTk5Ni8xODU0Mw==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
+</div>
+<!-- completed City install code -->
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ACG/">ACG</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/AtCoder/">AtCoder</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/BZOJ/">BZOJ</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CodeChef/">CodeChef</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Codeforces/">Codeforces</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hello-world/">Hello, world!</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Regional/">Regional</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UOJ/">UOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/冻态硅化/">冻态硅化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/分块/">分块</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/奶牛题/">奶牛题</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/寒假作业/">寒假作业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数论/">数论</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文学/">文学</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂文/">杂文</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/游记/">游记</a><span class="category-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BZOJ/">BZOJ</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDQ分治/">CDQ分治</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CodeChef/">CodeChef</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Codeforces/">Codeforces</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hello/">Hello</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP/">KMP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LCA/">LCA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regional/">Regional</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UOJ/">UOJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kNN/">kNN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/min-25筛/">min_25筛</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/">set</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/书评/">书评</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分答案/">二分答案</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/冻态硅化/">冻态硅化</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/出题/">出题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分块/">分块</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分/">差分</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/平衡树/">平衡树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/影评/">影评</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/思维/">思维</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打表/">打表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数论/">数论</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日常/">日常</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时评/">时评</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力/">暴力</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/期望/">期望</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/构造/">构造</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树/">树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/毒瘤/">毒瘤</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游记/">游记</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/滑动窗口/">滑动窗口</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/番剧/">番剧</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社会/">社会</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/离散化/">离散化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/积性函数/">积性函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线段树/">线段树</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/组合数学/">组合数学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/置换/">置换</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莫比乌斯反演/">莫比乌斯反演</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莫队算法/">莫队算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BZOJ/" style="font-size: 12px;">BZOJ</a> <a href="/tags/CDQ分治/" style="font-size: 10px;">CDQ分治</a> <a href="/tags/CodeChef/" style="font-size: 10px;">CodeChef</a> <a href="/tags/Codeforces/" style="font-size: 20px;">Codeforces</a> <a href="/tags/Hello/" style="font-size: 10px;">Hello</a> <a href="/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Regional/" style="font-size: 10px;">Regional</a> <a href="/tags/UOJ/" style="font-size: 10px;">UOJ</a> <a href="/tags/kNN/" style="font-size: 10px;">kNN</a> <a href="/tags/min-25筛/" style="font-size: 10px;">min_25筛</a> <a href="/tags/set/" style="font-size: 10px;">set</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/二分答案/" style="font-size: 12px;">二分答案</a> <a href="/tags/冻态硅化/" style="font-size: 16px;">冻态硅化</a> <a href="/tags/出题/" style="font-size: 10px;">出题</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/差分/" style="font-size: 14px;">差分</a> <a href="/tags/平衡树/" style="font-size: 10px;">平衡树</a> <a href="/tags/影评/" style="font-size: 12px;">影评</a> <a href="/tags/思维/" style="font-size: 12px;">思维</a> <a href="/tags/打表/" style="font-size: 10px;">打表</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/日常/" style="font-size: 10px;">日常</a> <a href="/tags/时评/" style="font-size: 10px;">时评</a> <a href="/tags/暴力/" style="font-size: 10px;">暴力</a> <a href="/tags/期望/" style="font-size: 10px;">期望</a> <a href="/tags/构造/" style="font-size: 12px;">构造</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 10px;">模拟</a> <a href="/tags/毒瘤/" style="font-size: 10px;">毒瘤</a> <a href="/tags/游记/" style="font-size: 18px;">游记</a> <a href="/tags/滑动窗口/" style="font-size: 12px;">滑动窗口</a> <a href="/tags/番剧/" style="font-size: 14px;">番剧</a> <a href="/tags/社会/" style="font-size: 10px;">社会</a> <a href="/tags/离散化/" style="font-size: 10px;">离散化</a> <a href="/tags/积性函数/" style="font-size: 10px;">积性函数</a> <a href="/tags/线段树/" style="font-size: 12px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 10px;">组合数学</a> <a href="/tags/置换/" style="font-size: 10px;">置换</a> <a href="/tags/莫比乌斯反演/" style="font-size: 10px;">莫比乌斯反演</a> <a href="/tags/莫队算法/" style="font-size: 10px;">莫队算法</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019.07</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019.06</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019.05</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019.04</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019.03</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2019.02</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019.01</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/UESTC1/">UESTC数据结构专题 我的题面最简单，快来做！</a>
+          </li>
+        
+          <li>
+            <a href="/LOJ6682命题报告/">LOJ6682命题报告 &amp;&amp; min_25筛总结</a>
+          </li>
+        
+          <li>
+            <a href="/赵队筛/">赵队筛 &amp;&amp; 线性筛gcd(i, n)</a>
+          </li>
+        
+          <li>
+            <a href="/kNN_1/">k-邻近算法（一）</a>
+          </li>
+        
+          <li>
+            <a href="/AGC028B/">AGC028B Removing Blocks</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="https://zhuanlan.zhihu.com/galahad" target="_blank">笔者知乎</a>
+          </li>
+        
+          <li>
+            <a href="http://blog.flyinthesky.win/" target="_blank">FlyInTheSky</a>
+          </li>
+        
+          <li>
+            <a href="https://isecloud.github.io/" target="_blank">isecloud</a>
+          </li>
+        
+          <li>
+            <a href="https://herano.github.io/" target="_blank">HeRaNO@UESTC</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+  
+    <div>
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="86" src="//music.163.com/outchain/player?type=2&id=490182455&auto=1&height=66"></iframe>
+    </div>
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 LoliconAutomaton<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a><br>
+      
+      <span id="busuanzi_container_site_pv">
+          总访问量 <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_pv"></span></a> 次
+        </span>
+        <span id="busuanzi_container_site_uv">
+          <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_uv"></span></a> 人.
+        </span>
+        
+        
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"></a>
+</div>
+
+<!-- totop end -->
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

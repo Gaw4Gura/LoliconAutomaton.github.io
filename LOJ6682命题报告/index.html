@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>LOJ6682命题报告 &amp;&amp; min_25筛总结 | LoliconAutomaton&#39;s RabbitHouse</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Overview之前在《浅谈莫比乌斯反演》那篇文章里提出了一个问题：  求：$\sum_{i=1}^{n}\sum_{j=1}^{n}\sum_{k=1}^{n}[j|i \land (j+k)|i]\cdot 1$  当时顺着反演走没走通，于是就引出了介绍gcd筛的那篇blog.后来被高学长插出了一个线性做法，是之前被遗忘的一个方向，于是就可以筛了。 题解换个元就相当于对于每个$i$，在它的约数">
+<meta name="keywords" content="min_25筛">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LOJ6682命题报告 &amp;&amp; min_25筛总结">
+<meta property="og:url" content="http://loliconautomaton.github.io/LOJ6682命题报告/index.html">
+<meta property="og:site_name" content="LoliconAutomaton&#39;s RabbitHouse">
+<meta property="og:description" content="Overview之前在《浅谈莫比乌斯反演》那篇文章里提出了一个问题：  求：$\sum_{i=1}^{n}\sum_{j=1}^{n}\sum_{k=1}^{n}[j|i \land (j+k)|i]\cdot 1$  当时顺着反演走没走通，于是就引出了介绍gcd筛的那篇blog.后来被高学长插出了一个线性做法，是之前被遗忘的一个方向，于是就可以筛了。 题解换个元就相当于对于每个$i$，在它的约数">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-14T02:39:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LOJ6682命题报告 &amp;&amp; min_25筛总结">
+<meta name="twitter:description" content="Overview之前在《浅谈莫比乌斯反演》那篇文章里提出了一个问题：  求：$\sum_{i=1}^{n}\sum_{j=1}^{n}\sum_{k=1}^{n}[j|i \land (j+k)|i]\cdot 1$  当时顺着反演走没走通，于是就引出了介绍gcd筛的那篇blog.后来被高学长插出了一个线性做法，是之前被遗忘的一个方向，于是就可以筛了。 题解换个元就相当于对于每个$i$，在它的约数">
+  
+    <link rel="alternative" href="/" title="LoliconAutomaton&#39;s RabbitHouse" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]--><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+</head></html>
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">LoliconAutomaton&#39;s RabbitHouse</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">万念俱灰也是一种超脱——木心</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name="tn" type="hidden" value="bds">
+          <input name="cl" type="hidden" value="3">
+          <input name="ct" type="hidden" value="2097152">
+          <input type="hidden" name="si" value="loliconautomaton.github.io">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-LOJ6682命题报告" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/LOJ6682命题报告/" class="article-date">
+  <time datetime="2019-07-14T02:39:16.000Z" itemprop="datePublished">2019-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数论/">数论</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LOJ6682命题报告 &amp;&amp; min_25筛总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>之前在《浅谈莫比乌斯反演》那篇文章里提出了一个问题：</p>
+<blockquote>
+<p>求：$\sum_{i=1}^{n}\sum_{j=1}^{n}\sum_{k=1}^{n}[j|i \land (j+k)|i]\cdot 1$</p>
+</blockquote>
+<p>当时顺着反演走没走通，于是就引出了介绍gcd筛的那篇blog.后来被高学长插出了一个线性做法，是之前被遗忘的一个方向，于是就可以筛了。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>换个元就相当于对于每个$i$，在它的约数里取点对，$i$对答案的贡献是$\sigma_0(i)\choose 2$，其中$\sigma_0(i)$表示$i$的约数个数。不过这样做是线性的，对于题目的规模肯定是吃不消的。<br>我们把答案表示成$\frac{\sum_{i=1}^{n}[\sigma_0^2(i)-\sigma_0(i)]}{2}$，其中$\sigma_0(i)$的前缀和直接数论分块就可以求解了，现在考虑$\sigma_0^2(i)$的前缀和。首先我们令$f(n)=\sigma_0^2(n)$，然后表示成下面这样：</p>
+<script type="math/tex; mode=display">
+\left\{
+    \begin{array}{lr}
+    f(1)=1 \\
+    f(p)=(1+1)^2 & p\in Prime \\
+    f(p^k)=(k+1)^2 & p\in Prime
+    \end{array}
+\right.</script><p>然后用min_25筛或者洲阁筛就可以过了。</p>
+<h3 id="min-25筛"><a href="#min-25筛" class="headerlink" title="min_25筛"></a>min_25筛</h3><p>min_25筛是min_25（之前我一直以为是中国人2333）在他的blog里提到的快速求一类积性函数前缀和的方法，这类积性函数有一个特征：在质数处的取值可以用多项式表示出来，并且在质数的幂处的值可以快速计算。<br>首先考虑怎么计算$\sum_{p\in Prime}p^k$，设$p_i$表示第$i$个质数，$g(n,j)=\sum_{i\le n\land a_1&gt;p_j}$，其中$a_1$表示$i$最小的质因数。<br>如果$p_j&gt;\sqrt{n}$，那么$i$的最小质因数显然小于$p_j$（根据埃氏筛，$i$会被它的最小质因数$a_1$筛掉，并且以$a_1$为最小质因数的数就是$a_1^2$），因此$p_j$对答案没有贡献，也就是$g(n,j-1)$.<br>接下来考虑$p_j\le \sqrt{n}$的情况，由于质数变大了，因此能产生贡献的数就变少了，先把包含了$p_j$的一部分减掉，也就是$g(\lfloor \frac{n}{p_j}\rfloor,j-1)$，然后再把比$p_j$小的部分给加回去，也就是$g(p_j-1,j-1)$，前面需要乘上一个系数$p_j^k$.<br>合起来的话转移就是：</p>
+<script type="math/tex; mode=display">
+g(n,j)=\left\{
+    \begin{array}{lr}
+    g(n,j-1) & p_j > \sqrt{n} \\
+    g(n,j-1)-p_j^k\cdot(g(\lfloor \frac{n}{p_j}\rfloor,j-1)-g(p_j-1,j-1)) & p_j\le \sqrt{n}
+    \end{array}
+\right.</script><p>于是我们发现只需要用到不超过$\sqrt{n}$的质数就可以了，线性筛完全可以胜任这项工作！<br>现在考虑怎么求某个符合条件的$f(n)$的答案，不妨假设$S(n,j)=\sum_{i\le n\land a_1\ge p_j}f(i)$，答案就是$f(1)+S(n,1)$.由于我们已经知道$i$为质数的答案了，因此对于合数，把它拆成若干个质数的积，然后答案就是：</p>
+<script type="math/tex; mode=display">
+\sum_{j\ge i}^{p_j\le \sqrt{n}}\sum_{e=1}^{p_j^{e+1}\le n}(S(\lfloor \frac{n}{p_i} \rfloor,j+1)\cdot f(p_i^e)+f(p_i^{e+1}))</script><p>答案就是</p>
+<script type="math/tex; mode=display">
+g(n,Primes)-\sum_{i=1}^{j-1}f(p_i)+\sum_{j\ge i}^{p_j\le \sqrt{n}}\sum_{e=1}^{p_j^{e+1}\le n}(S(\lfloor \frac{n}{p_i} \rfloor,j+1)\cdot f(p_i^e)+f(p_i^{e+1}))</script><p>直接记忆化搜索一下即可，复杂度是$O(\frac{n^{\frac{3}{4}}}{\ln n})$.</p>
+<h3 id="LOJ6682-std"><a href="#LOJ6682-std" class="headerlink" title="LOJ6682 std"></a>LOJ6682 std</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> P 998244353</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inv2 499122177</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">chkadd</span><span class="params">(ll x, ll y)</span> </span>&#123; x += y; <span class="keyword">return</span> x &gt;= P ? x - P : x; &#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">chkdec</span><span class="params">(ll x, ll y)</span> </span>&#123; x -= y; <span class="keyword">return</span> x &lt; <span class="number">0</span> ? x + P : x; &#125;</span><br><span class="line"></span><br><span class="line">ll n, m, pnt, prime[N];</span><br><span class="line"><span class="keyword">bool</span> mark[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">sieve</span><span class="params">(ll n = N - <span class="number">10</span>)</span> </span>&#123;</span><br><span class="line">    mark[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (ll i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!mark[i]) prime[++pnt] = i;</span><br><span class="line">        <span class="keyword">for</span> (ll j = <span class="number">1</span>; j &lt;= pnt &amp;&amp; i * prime[j] &lt;= n; ++j) &#123;</span><br><span class="line">            mark[i * prime[j]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % prime[j] == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    prime[pnt + <span class="number">1</span>] = n + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ll id1[N], id2[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">dfs</span><span class="params">(ll x, ll y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt;= <span class="number">1L</span>L || x &lt; prime[y]) <span class="keyword">return</span> <span class="number">0L</span>L;</span><br><span class="line">    <span class="keyword">if</span> (prime[y] &gt; m) <span class="keyword">return</span> chkdec((x &lt;= m ? id1[x] : id2[n / x]), id1[m]);</span><br><span class="line">    ll s = chkdec((x &lt;= m ? id1[x] : id2[n / x]), id1[prime[y] - <span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">for</span> (ll i = y; i &lt;= pnt &amp;&amp; prime[i] * prime[i] &lt;= x; ++i) &#123;</span><br><span class="line">        ll x1 = x / prime[i];</span><br><span class="line">        <span class="keyword">for</span> (ll j = <span class="number">1L</span>L; x1 &gt;= prime[i]; ++j, x1 /= prime[i])</span><br><span class="line">            s = chkadd(s, dfs(x1, i + <span class="number">1L</span>L) * (j + <span class="number">1L</span>L) % P * (j + <span class="number">1L</span>L) % P + (j + <span class="number">2L</span>L) * (j + <span class="number">2L</span>L) % P);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">solve</span><span class="params">(ll n)</span> </span>&#123;</span><br><span class="line">    m = <span class="built_in">sqrt</span>(n) + <span class="number">0.5</span>;</span><br><span class="line">    ll mx = n / (m + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (ll i = <span class="number">2L</span>L; i &lt;= m; ++i) id1[i] = i - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (ll i = <span class="number">1L</span>L; i &lt;= mx; ++i) id2[i] = n / i - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (ll i = <span class="number">1L</span>L; i &lt;= pnt &amp;&amp; prime[i] &lt;= m; ++i) &#123;</span><br><span class="line">        ll x = id1[prime[i] - <span class="number">1</span>];</span><br><span class="line">        ll n1 = min(mx / prime[i], n / prime[i] / prime[i]);</span><br><span class="line">        ll n2 = min(mx, n / prime[i] / prime[i]);</span><br><span class="line">        <span class="keyword">for</span> (ll j = <span class="number">1L</span>L; j &lt;= n1; ++j) id2[j] = chkdec(id2[j], chkdec(id2[j * prime[i]], x));</span><br><span class="line">        <span class="keyword">for</span> (ll j = n1 + <span class="number">1</span>; j &lt;= n2; ++j) id2[j] = chkdec(id2[j], chkdec(id1[n / j / prime[i]], x));</span><br><span class="line">        <span class="keyword">for</span> (ll j = m; j &gt;= prime[i] * prime[i]; --j) id1[j] = chkdec(id1[j], chkdec(id1[j / prime[i]], x));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (ll i = <span class="number">2L</span>L; i &lt;= m; ++i) id1[i] = id1[i] * <span class="number">4L</span>L % P;</span><br><span class="line">    <span class="keyword">for</span> (ll i = <span class="number">1L</span>L; i &lt;= mx; ++i) id2[i] = id2[i] * <span class="number">4L</span>L % P;</span><br><span class="line">    ll ret = dfs(n, <span class="number">1L</span>L);</span><br><span class="line">    <span class="keyword">return</span> (ret + <span class="number">1L</span>L) % P;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    sieve();</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; n) &#123;</span><br><span class="line">        ll ret2 = <span class="number">0L</span>L;</span><br><span class="line">        <span class="keyword">for</span> (ll l = <span class="number">1L</span>L, r; l &lt;= n; l = r + <span class="number">1L</span>L) &#123;</span><br><span class="line">            r = n / (n / l);</span><br><span class="line">            ret2 = chkadd(ret2, (r - l + <span class="number">1L</span>L) * (n / l) % P);</span><br><span class="line">        &#125;</span><br><span class="line">        ll ret1 = solve(n);</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; chkdec(ret1, ret2) * inv2 % P &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://loliconautomaton.github.io/LOJ6682命题报告/" data-id="cjyekwln80011qku7fuy2dal8" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/min-25筛/">min_25筛</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/UESTC1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          UESTC数据结构专题 我的题面最简单，快来做！
+        
+      </div>
+    </a>
+  
+  
+    <a href="/赵队筛/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">赵队筛 &amp;&amp; 线性筛gcd(i, n)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<!-- LiveRe City install code -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MTk5Ni8xODU0Mw==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
+</div>
+<!-- completed City install code -->
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ACG/">ACG</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/AtCoder/">AtCoder</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/BZOJ/">BZOJ</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CodeChef/">CodeChef</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Codeforces/">Codeforces</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hello-world/">Hello, world!</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Regional/">Regional</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UOJ/">UOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/冻态硅化/">冻态硅化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/分块/">分块</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/奶牛题/">奶牛题</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/寒假作业/">寒假作业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数论/">数论</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文学/">文学</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂文/">杂文</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/游记/">游记</a><span class="category-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BZOJ/">BZOJ</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDQ分治/">CDQ分治</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CodeChef/">CodeChef</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Codeforces/">Codeforces</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hello/">Hello</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP/">KMP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LCA/">LCA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regional/">Regional</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UOJ/">UOJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kNN/">kNN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/min-25筛/">min_25筛</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/">set</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/书评/">书评</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分答案/">二分答案</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/冻态硅化/">冻态硅化</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/出题/">出题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分块/">分块</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分/">差分</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/平衡树/">平衡树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/影评/">影评</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/思维/">思维</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打表/">打表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数论/">数论</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日常/">日常</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时评/">时评</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力/">暴力</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/期望/">期望</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/构造/">构造</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树/">树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/毒瘤/">毒瘤</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游记/">游记</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/滑动窗口/">滑动窗口</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/番剧/">番剧</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社会/">社会</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/离散化/">离散化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/积性函数/">积性函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线段树/">线段树</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/组合数学/">组合数学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/置换/">置换</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莫比乌斯反演/">莫比乌斯反演</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莫队算法/">莫队算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BZOJ/" style="font-size: 12px;">BZOJ</a> <a href="/tags/CDQ分治/" style="font-size: 10px;">CDQ分治</a> <a href="/tags/CodeChef/" style="font-size: 10px;">CodeChef</a> <a href="/tags/Codeforces/" style="font-size: 20px;">Codeforces</a> <a href="/tags/Hello/" style="font-size: 10px;">Hello</a> <a href="/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Regional/" style="font-size: 10px;">Regional</a> <a href="/tags/UOJ/" style="font-size: 10px;">UOJ</a> <a href="/tags/kNN/" style="font-size: 10px;">kNN</a> <a href="/tags/min-25筛/" style="font-size: 10px;">min_25筛</a> <a href="/tags/set/" style="font-size: 10px;">set</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/二分答案/" style="font-size: 12px;">二分答案</a> <a href="/tags/冻态硅化/" style="font-size: 16px;">冻态硅化</a> <a href="/tags/出题/" style="font-size: 10px;">出题</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/差分/" style="font-size: 14px;">差分</a> <a href="/tags/平衡树/" style="font-size: 10px;">平衡树</a> <a href="/tags/影评/" style="font-size: 12px;">影评</a> <a href="/tags/思维/" style="font-size: 12px;">思维</a> <a href="/tags/打表/" style="font-size: 10px;">打表</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/日常/" style="font-size: 10px;">日常</a> <a href="/tags/时评/" style="font-size: 10px;">时评</a> <a href="/tags/暴力/" style="font-size: 10px;">暴力</a> <a href="/tags/期望/" style="font-size: 10px;">期望</a> <a href="/tags/构造/" style="font-size: 12px;">构造</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 10px;">模拟</a> <a href="/tags/毒瘤/" style="font-size: 10px;">毒瘤</a> <a href="/tags/游记/" style="font-size: 18px;">游记</a> <a href="/tags/滑动窗口/" style="font-size: 12px;">滑动窗口</a> <a href="/tags/番剧/" style="font-size: 14px;">番剧</a> <a href="/tags/社会/" style="font-size: 10px;">社会</a> <a href="/tags/离散化/" style="font-size: 10px;">离散化</a> <a href="/tags/积性函数/" style="font-size: 10px;">积性函数</a> <a href="/tags/线段树/" style="font-size: 12px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 10px;">组合数学</a> <a href="/tags/置换/" style="font-size: 10px;">置换</a> <a href="/tags/莫比乌斯反演/" style="font-size: 10px;">莫比乌斯反演</a> <a href="/tags/莫队算法/" style="font-size: 10px;">莫队算法</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019.07</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019.06</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019.05</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019.04</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019.03</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2019.02</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019.01</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/UESTC1/">UESTC数据结构专题 我的题面最简单，快来做！</a>
+          </li>
+        
+          <li>
+            <a href="/LOJ6682命题报告/">LOJ6682命题报告 &amp;&amp; min_25筛总结</a>
+          </li>
+        
+          <li>
+            <a href="/赵队筛/">赵队筛 &amp;&amp; 线性筛gcd(i, n)</a>
+          </li>
+        
+          <li>
+            <a href="/kNN_1/">k-邻近算法（一）</a>
+          </li>
+        
+          <li>
+            <a href="/AGC028B/">AGC028B Removing Blocks</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="https://zhuanlan.zhihu.com/galahad" target="_blank">笔者知乎</a>
+          </li>
+        
+          <li>
+            <a href="http://blog.flyinthesky.win/" target="_blank">FlyInTheSky</a>
+          </li>
+        
+          <li>
+            <a href="https://isecloud.github.io/" target="_blank">isecloud</a>
+          </li>
+        
+          <li>
+            <a href="https://herano.github.io/" target="_blank">HeRaNO@UESTC</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+  
+    <div>
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="86" src="//music.163.com/outchain/player?type=2&id=490182455&auto=1&height=66"></iframe>
+    </div>
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 LoliconAutomaton<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a><br>
+      
+      <span id="busuanzi_container_site_pv">
+          总访问量 <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_pv"></span></a> 次
+        </span>
+        <span id="busuanzi_container_site_uv">
+          <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_uv"></span></a> 人.
+        </span>
+        
+        
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"></a>
+</div>
+
+<!-- totop end -->
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
