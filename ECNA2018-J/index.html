@@ -4,18 +4,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>Tag: UOJ | LoliconAutomaton&#39;s RabbitHouse</title>
+  <title>ECNA2018 J | LoliconAutomaton&#39;s RabbitHouse</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="LoliconAutomaton&apos;s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LoliconAutomaton&#39;s RabbitHouse">
-<meta property="og:url" content="http://loliconautomaton.github.io/tags/UOJ/index.html">
+  <meta name="description" content="OverviewNWPU随机自闭赛 题意给一张有向图，请你加一条边，但是不能改变原图的连通性，问有多少种加法 题解考虑到既可以在强连通分量内部任意一条原本不存在的边，又可以在两个强连通分量之间加方向相同的边，而加边的方案又受到原本就有的边的限制，因此不妨假设一开始并没有边，把所有合法的加边方案求出来，然后减去原图已经有的边就可以了。 先跑一遍Tarjan缩点，然后对于同一个强连通分量每个点的贡献都">
+<meta name="keywords" content="拓扑排序,容斥">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECNA2018 J">
+<meta property="og:url" content="http://loliconautomaton.github.io/ECNA2018-J/index.html">
 <meta property="og:site_name" content="LoliconAutomaton&#39;s RabbitHouse">
-<meta property="og:description" content="LoliconAutomaton&apos;s blog">
+<meta property="og:description" content="OverviewNWPU随机自闭赛 题意给一张有向图，请你加一条边，但是不能改变原图的连通性，问有多少种加法 题解考虑到既可以在强连通分量内部任意一条原本不存在的边，又可以在两个强连通分量之间加方向相同的边，而加边的方案又受到原本就有的边的限制，因此不妨假设一开始并没有边，把所有合法的加边方案求出来，然后减去原图已经有的边就可以了。 先跑一遍Tarjan缩点，然后对于同一个强连通分量每个点的贡献都">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-06T13:17:51.142Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LoliconAutomaton&#39;s RabbitHouse">
-<meta name="twitter:description" content="LoliconAutomaton&apos;s blog">
+<meta name="twitter:title" content="ECNA2018 J">
+<meta name="twitter:description" content="OverviewNWPU随机自闭赛 题意给一张有向图，请你加一条边，但是不能改变原图的连通性，问有多少种加法 题解考虑到既可以在强连通分量内部任意一条原本不存在的边，又可以在两个强连通分量之间加方向相同的边，而加边的方案又受到原本就有的边的限制，因此不妨假设一开始并没有边，把所有合法的加边方案求出来，然后减去原图已经有的边就可以了。 先跑一遍Tarjan缩点，然后对于同一个强连通分量每个点的贡献都">
   
     <link rel="alternative" href="/" title="LoliconAutomaton&#39;s RabbitHouse" type="application/atom+xml">
   
@@ -71,40 +73,91 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/新年拯救计划/" class="archive-article-date">
-  <time datetime="2019-02-09T14:07:52.000Z" itemprop="datePublished">02-09</time>
+      <section id="main"><article id="post-ECNA2018-J" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/ECNA2018-J/" class="article-date">
+  <time datetime="2019-08-06T13:09:25.826Z" itemprop="datePublished">2019-08-06</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Regional/">Regional</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/新年拯救计划/">新年拯救计划</a>
+    <h1 class="article-title" itemprop="name">
+      ECNA2018 J
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>NWPU随机自闭赛</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给一张有向图，请你加一条边，但是不能改变原图的连通性，问有多少种加法</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>考虑到既可以在强连通分量内部任意一条原本不存在的边，又可以在两个强连通分量之间加方向相同的边，而加边的方案又受到原本就有的边的限制，因此不妨假设一开始并没有边，把所有合法的加边方案求出来，然后减去原图已经有的边就可以了。</p>
+<p>先跑一遍Tarjan缩点，然后对于同一个强连通分量每个点的贡献都是$cnt-1$，其中$cnt$表示强连通分量的大小。对于不同的强连通分量，首先考虑只有两个的情况，并且方向是$u\to v$，那么$u$中的每个点都可以跟$v$中的每个点加一条方向相同的边，答案就是$cnt_u\times cnt_v$.再考虑有多个强连通分量的情况，很容易想到对原图进行拓扑排序以后找到叶子节点做一个后缀和。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 2550</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, w[N][N];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[N], M[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> scc, dfn, pre[N], low[N], bel[N], cnt[N];</span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; S;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">	pre[u] = low[u] = ++dfn;</span><br><span class="line">	S.push(u);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> v : G[u]) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!pre[v]) dfs(v), low[u] = min(low[u], low[v]);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (!bel[v]) low[u] = min(low[u], pre[v]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (low[u] == pre[u]) &#123;</span><br><span class="line">		++scc;</span><br><span class="line">		<span class="keyword">while</span> (!S.empty()) &#123;</span><br><span class="line">			<span class="keyword">int</span> x = S.top(); S.pop();</span><br><span class="line">			bel[x] = scc;</span><br><span class="line">			++cnt[scc];</span><br><span class="line">			<span class="keyword">if</span> (x == u) <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> sz[N];</span><br><span class="line"><span class="keyword">int</span> deg[N], ged[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++j) &#123;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; w[i][j];</span><br><span class="line">			<span class="keyword">if</span> (w[i][j] == <span class="number">1</span>) G[i].emplace_back(j), ++deg[j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="keyword">if</span> (!pre[i]) dfs(i);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> j : G[i]) &#123;</span><br><span class="line">			<span class="keyword">if</span> (bel[i] != bel[j]) M[bel[i]].emplace_back(bel[j]), ++ged[bel[j]];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; topo;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= scc; ++i) &#123;</span><br><span class="line">		<span class="keyword">if</span> (ged[i] == <span class="number">0</span>) &#123;</span><br><span class="line">			topo.emplace_back(i);</span><br><span class="line">			q.push(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">		<span class="keyword">int</span> u = q.front(); q.pop();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> v : M[u]) &#123;</span><br><span class="line">			<span class="keyword">if</span> (--ged[v] == <span class="number">0</span>) &#123;</span><br><span class="line">				topo.emplace_back(v);</span><br><span class="line">				q.push(v);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> x : topo) sz[x] = cnt[x];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = scc - <span class="number">2</span>; i &gt;= <span class="number">0</span>; --i) ret += sz[topo[i]] * sz[topo[i + <span class="number">1</span>]], sz[topo[i]] += sz[topo[i + <span class="number">1</span>]];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) ret += cnt[bel[i]] - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> j : G[i])</span><br><span class="line">			--ret;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ret &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://loliconautomaton.github.io/ECNA2018-J/" data-id="cjyzuoeak000qt8u7ljnxuoep" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/容斥/">容斥</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/拓扑排序/">拓扑排序</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/ICPC2017HK-B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">ICPC2017HK B</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<!-- LiveRe City install code -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MTk5Ni8xODU0Mw==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
+</div>
+<!-- completed City install code -->
 </section>
       
       <aside id="sidebar">
