@@ -4,18 +4,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>LoliconAutomaton&#39;s RabbitHouse</title>
+  <title>NWPU2019个人排位赛1C | LoliconAutomaton&#39;s RabbitHouse</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="LoliconAutomaton&apos;s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LoliconAutomaton&#39;s RabbitHouse">
-<meta property="og:url" content="http://loliconautomaton.github.io/page/4/index.html">
+  <meta name="description" content="Overview被这个题关了一整场 题意题目链接 有$n$种硬币每种面值$V_i$数量$C_i$，现在要组成面值是$S$的货币，并且每种用到的面值要求使用的数量一样，问方案数。 题解一开始以为是一个类似多重背包的计数问题，后来发现了要求数量一样，于是就推了一个看起来非常正确的状态：$f_{k,j}$表示每种用$k$枚，组成面值为$j$的方案数。然后就一直没过样例。比赛最后五分钟发现这种状态没办法处">
+<meta name="keywords" content="01背包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NWPU2019个人排位赛1C">
+<meta property="og:url" content="http://loliconautomaton.github.io/NWPU2019个人排位赛1C/index.html">
 <meta property="og:site_name" content="LoliconAutomaton&#39;s RabbitHouse">
-<meta property="og:description" content="LoliconAutomaton&apos;s blog">
+<meta property="og:description" content="Overview被这个题关了一整场 题意题目链接 有$n$种硬币每种面值$V_i$数量$C_i$，现在要组成面值是$S$的货币，并且每种用到的面值要求使用的数量一样，问方案数。 题解一开始以为是一个类似多重背包的计数问题，后来发现了要求数量一样，于是就推了一个看起来非常正确的状态：$f_{k,j}$表示每种用$k$枚，组成面值为$j$的方案数。然后就一直没过样例。比赛最后五分钟发现这种状态没办法处">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-13T01:40:43.703Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LoliconAutomaton&#39;s RabbitHouse">
-<meta name="twitter:description" content="LoliconAutomaton&apos;s blog">
+<meta name="twitter:title" content="NWPU2019个人排位赛1C">
+<meta name="twitter:description" content="Overview被这个题关了一整场 题意题目链接 有$n$种硬币每种面值$V_i$数量$C_i$，现在要组成面值是$S$的货币，并且每种用到的面值要求使用的数量一样，问方案数。 题解一开始以为是一个类似多重背包的计数问题，后来发现了要求数量一样，于是就推了一个看起来非常正确的状态：$f_{k,j}$表示每种用$k$枚，组成面值为$j$的方案数。然后就一直没过样例。比赛最后五分钟发现这种状态没办法处">
   
     <link rel="alternative" href="/" title="LoliconAutomaton&#39;s RabbitHouse" type="application/atom+xml">
   
@@ -71,16 +73,14 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main">
-  
-    <article id="post-一场春季赛的台前幕后（上）" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <section id="main"><article id="post-NWPU2019个人排位赛1C" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/一场春季赛的台前幕后（上）/" class="article-date">
-  <time datetime="2019-03-20T15:42:32.000Z" itemprop="datePublished">2019-03-20</time>
+    <a href="/NWPU2019个人排位赛1C/" class="article-date">
+  <time datetime="2019-08-13T01:36:24.071Z" itemprop="datePublished">2019-08-13</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/游记/">游记</a>
+    <a class="article-category-link" href="/categories/冻态硅化/">冻态硅化</a>
   </div>
 
   </div>
@@ -90,8 +90,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/一场春季赛的台前幕后（上）/">一场春季赛的台前幕后（上）</a>
+    <h1 class="article-title" itemprop="name">
+      NWPU2019个人排位赛1C
     </h1>
   
 
@@ -101,543 +101,64 @@
       
         
         
-          <h3 id="一切的起点"><a href="#一切的起点" class="headerlink" title="一切的起点"></a>一切的起点</h3><p>“ACM基地每年12月份左右都会有校赛的。”——故事就这么开始了。<br>想着是新生赛，我这条咸鱼还是不去了吧，去了也是身败名裂，刚好手上有两个题，于是抱着试一试的心态找到队长：“队长，新生赛缺题吗？”，然后得到了：“不缺，而且你可是要参赛的啊/滑稽。”这样的回复……逐渐走在被安排的道路上。<br>热身赛发现一票大佬都没来，捡了一个rk1，不过这么一股浓郁的math风味，怕是下午凉了。<br>然后，下午果真凉了……看着大家都是找规律的好手，打算安排一下大家。</p>
-          
-            <p class="article-more-link">
-              <a href="/一场春季赛的台前幕后（上）/#more">Read More</a>
-            </p>
-          
+          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>被这个题关了一整场</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p><a href="https://vjudge.net/contest/318816#problem/C" target="_blank" rel="noopener">题目链接</a></p>
+<p>有$n$种硬币每种面值$V_i$数量$C_i$，现在要组成面值是$S$的货币，并且每种用到的面值要求使用的数量一样，问方案数。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>一开始以为是一个类似多重背包的计数问题，后来发现了要求数量一样，于是就推了一个看起来非常正确的状态：$f_{k,j}$表示每种用$k$枚，组成面值为$j$的方案数。然后就一直没过样例。比赛最后五分钟发现这种状态没办法处理$(2,4)\to (2,4,4)$这种转移。</p>
+<p>正确的做法是考虑到每种面值数量一样，不妨设为$k$，那么$k|s$，枚举$k$然后修改上界跑01背包即可，好题</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5050</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">Int</span>&gt; <span class="title">inline</span> <span class="title">void</span> <span class="title">read</span>(<span class="title">Int</span>&amp; <span class="title">x</span>) &#123;</span></span><br><span class="line">  x = <span class="number">0</span>; <span class="keyword">char</span> ch = getchar(); <span class="keyword">int</span> f = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(ch); ch = getchar()) <span class="keyword">if</span> (ch == <span class="string">'-'</span>) f = <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; <span class="built_in">isdigit</span>(ch); x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>, ch = getchar());</span><br><span class="line">  x *= f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> T, n, s, V[<span class="number">55</span>], C[<span class="number">55</span>];</span><br><span class="line">ll ret, f[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> _01(<span class="keyword">int</span> p) &#123;</span><br><span class="line">  <span class="built_in">memset</span>(f, <span class="number">0</span>, <span class="keyword">sizeof</span>(f)); f[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (C[i] &lt; p) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = s / p; j &gt;= V[i]; --j)</span><br><span class="line">      f[j] += f[j - V[i]];</span><br><span class="line">  &#125;</span><br><span class="line">  ret += f[s / p];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  read(T);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> kase = <span class="number">1</span>; kase &lt;= T; ++kase) &#123;</span><br><span class="line">    read(s), read(n); ret = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) read(V[i]), read(C[i]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i * i &lt;= s; ++i) &#123;</span><br><span class="line">      <span class="keyword">if</span> (s % i) <span class="keyword">continue</span>;</span><br><span class="line">      <span class="keyword">if</span> (s == i * i) _01(i);</span><br><span class="line">      <span class="keyword">else</span> _01(s / i), _01(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Case %d: %lld\n"</span>, kase, ret);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
         
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://loliconautomaton.github.io/一场春季赛的台前幕后（上）/" data-id="cjz95tnom002w6wu7f97ihvv5" class="article-share-link">分享到</a>
+        <a data-url="http://loliconautomaton.github.io/NWPU2019个人排位赛1C/" data-id="cjz95tnng001q6wu7286isat7" class="article-share-link">分享到</a>
       
 
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/出题/">出题</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/01背包/">01背包</a></li></ul>
 
     </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/CF1200/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Codeforces Round 578</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
 
 
-  
-    <article id="post-NWPU CCCC2019选拔赛游记" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/NWPU CCCC2019选拔赛游记/" class="article-date">
-  <time datetime="2019-03-12T15:06:08.000Z" itemprop="datePublished">2019-03-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/游记/">游记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/NWPU CCCC2019选拔赛游记/">NWPU CCCC2019选拔赛游记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        
-          <h3 id="Day-INF"><a href="#Day-INF" class="headerlink" title="Day -INF"></a>Day -INF</h3><p>寒假刷了一会PINTA，然后觉得这上面的题目纯毒瘤，就没做了，，，<br>IOI模式还是很资瓷的，可以有部分分限制。<br>单人solo的时候总是会特别紧张<br>赵巨组题怎么直接上BZOJ了啊，早知道不告诉他bz的数据可以下载了</p>
-          
-            <p class="article-more-link">
-              <a href="/NWPU CCCC2019选拔赛游记/#more">Read More</a>
-            </p>
-          
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://loliconautomaton.github.io/NWPU CCCC2019选拔赛游记/" data-id="cjz95tnn9001k6wu7bh8b6pg3" class="article-share-link">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/游记/">游记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-Gty的二逼妹子序列" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/Gty的二逼妹子序列/" class="article-date">
-  <time datetime="2019-03-06T15:09:44.000Z" itemprop="datePublished">2019-03-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/分块/">分块</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Gty的二逼妹子序列/">Gty的二逼妹子序列</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        
-          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>为什么妹子是二逼的呢？？？<br>今天的第二个“二逼”打头的题目<br>敲错变量导致调试一晚上</p>
-          
-            <p class="article-more-link">
-              <a href="/Gty的二逼妹子序列/#more">Read More</a>
-            </p>
-          
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://loliconautomaton.github.io/Gty的二逼妹子序列/" data-id="cjz95tnmu00166wu79d0zkmfv" class="article-share-link">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分块/">分块</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/莫队算法/">莫队算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-二逼平衡树" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/二逼平衡树/" class="article-date">
-  <time datetime="2019-03-06T11:48:06.000Z" itemprop="datePublished">2019-03-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/二逼平衡树/">二逼平衡树</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        
-          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>数据结构一时爽，一直数据结构一直爽</p>
-          
-            <p class="article-more-link">
-              <a href="/二逼平衡树/#more">Read More</a>
-            </p>
-          
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://loliconautomaton.github.io/二逼平衡树/" data-id="cjz95tnop00306wu7316xx3ou" class="article-share-link">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/平衡树/">平衡树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线段树/">线段树</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-傲慢与偏见" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/傲慢与偏见/" class="article-date">
-  <time datetime="2019-03-04T16:19:34.000Z" itemprop="datePublished">2019-03-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/文学/">文学</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/傲慢与偏见/">傲慢与偏见</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        
-          <h3 id="Pride-and-Prejudice"><a href="#Pride-and-Prejudice" class="headerlink" title="Pride and Prejudice"></a>Pride and Prejudice</h3><p><img src="/../images/pap.png" alt="傲慢使别人不能来爱我，偏见使我无法去爱别人"></p>
-          
-            <p class="article-more-link">
-              <a href="/傲慢与偏见/#more">Read More</a>
-            </p>
-          
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://loliconautomaton.github.io/傲慢与偏见/" data-id="cjz95tnou00356wu7so0hbrv5" class="article-share-link">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/书评/">书评</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/影评/">影评</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-境界的彼方" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/境界的彼方/" class="article-date">
-  <time datetime="2019-03-03T05:22:04.000Z" itemprop="datePublished">2019-03-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ACG/">ACG</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/境界的彼方/">境界的彼方：爱与恨</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        
-          <h3 id="不愉快です！"><a href="#不愉快です！" class="headerlink" title="不愉快です！"></a>不愉快です！</h3><p><img src="/../images/栗山未来.PNG" alt="没有未来的未来不是我想要的未来！"></p>
-          
-            <p class="article-more-link">
-              <a href="/境界的彼方/#more">Read More</a>
-            </p>
-          
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://loliconautomaton.github.io/境界的彼方/" data-id="cjz95tnp6003h6wu7axmjpkzn" class="article-share-link">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/番剧/">番剧</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-bzoj2712" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/bzoj2712/" class="article-date">
-  <time datetime="2019-03-03T05:05:04.000Z" itemprop="datePublished">2019-03-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/BZOJ/">BZOJ</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/bzoj2712/">BZOJ2712 樱花</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        
-          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>さくら ~あなたに出会えてよかった~</p>
-          
-            <p class="article-more-link">
-              <a href="/bzoj2712/#more">Read More</a>
-            </p>
-          
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://loliconautomaton.github.io/bzoj2712/" data-id="cjz95tno9002j6wu73sq12oqy" class="article-share-link">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BZOJ/">BZOJ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数论/">数论</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-Codeforces Round 540" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/Codeforces Round 540/" class="article-date">
-  <time datetime="2019-02-26T15:22:48.000Z" itemprop="datePublished">2019-02-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Codeforces/">Codeforces</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Codeforces Round 540/">Codeforces Round 540</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        
-          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>本来想咕咕咕的，后来准备用小号演一波，结果演过头了……<br>幸好没有错过这么精彩的一场比赛，八个题目各有千秋啊，给出题人点赞！</p>
-          
-            <p class="article-more-link">
-              <a href="/Codeforces Round 540/#more">Read More</a>
-            </p>
-          
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://loliconautomaton.github.io/Codeforces Round 540/" data-id="cjz95tnml000x6wu7r9pbq94b" class="article-share-link">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Codeforces/">Codeforces</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/思维/">思维</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/构造/">构造</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-Codeforces 1093E CDQ" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/Codeforces 1093E CDQ/" class="article-date">
-  <time datetime="2019-02-17T12:51:34.000Z" itemprop="datePublished">2019-02-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Codeforces/">Codeforces</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Codeforces 1093E CDQ/">Codeforces 1093E Intersection of Permutations</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        
-          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>重构代码大法好……<br>一方大哥又被打了……</p>
-          
-            <p class="article-more-link">
-              <a href="/Codeforces 1093E CDQ/#more">Read More</a>
-            </p>
-          
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://loliconautomaton.github.io/Codeforces 1093E CDQ/" data-id="cjz95tnmc000n6wu7sxhmqvfj" class="article-share-link">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDQ分治/">CDQ分治</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Codeforces/">Codeforces</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-Tamako" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/Tamako/" class="article-date">
-  <time datetime="2019-02-13T17:27:34.000Z" itemprop="datePublished">2019-02-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ACG/">ACG</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Tamako/">昨夜星辰昨夜风</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        
-          <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1550087281211&amp;di=919b66ecf0cf938dab912a2e14aa309d&amp;imgtype=0&amp;src=http%3A%2F%2Fimg1.178.com%2Facg1%2F201705%2F287949050163%2F287954109453.jpg" alt="玉子的爱情故事"></p>
-          
-            <p class="article-more-link">
-              <a href="/Tamako/#more">Read More</a>
-            </p>
-          
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://loliconautomaton.github.io/Tamako/" data-id="cjz95tnnr00216wu7qpmbhsyx" class="article-share-link">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/番剧/">番剧</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-
-
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">下一页 &raquo;</a>
-  </nav>
+<!-- LiveRe City install code -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MTk5Ni8xODU0Mw==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
+</div>
+<!-- completed City install code -->
 </section>
       
       <aside id="sidebar">
