@@ -4,18 +4,22 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>Tag: 置换 | LoliconAutomaton&#39;s RabbitHouse</title>
+  <title>C &amp;&amp; WebAssembly (2) | LoliconAutomaton&#39;s RabbitHouse</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="LoliconAutomaton&apos;s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LoliconAutomaton&#39;s RabbitHouse">
-<meta property="og:url" content="http://loliconautomaton.github.io/tags/置换/index.html">
+  <meta name="description" content="Overview在(1)里已经讲了WebAssembly的基础，在这一篇文章里要讲的是如何在C和JavaScript之间交互。这里说的交互，主要是数据上的交互（还有一些其他的交互方式会在后面的文章写到）。 函数的交互C本身是没有和JavaScript进行交互的标准库的，需要用WebAssembly提供的&amp;lt;emscripten.h&amp;gt;，以及EMSCRIPTEN_KEEPALIVE来实现。比">
+<meta name="keywords" content="WebAssembly">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C &amp;&amp; WebAssembly (2)">
+<meta property="og:url" content="http://loliconautomaton.github.io/CWASM2/index.html">
 <meta property="og:site_name" content="LoliconAutomaton&#39;s RabbitHouse">
-<meta property="og:description" content="LoliconAutomaton&apos;s blog">
+<meta property="og:description" content="Overview在(1)里已经讲了WebAssembly的基础，在这一篇文章里要讲的是如何在C和JavaScript之间交互。这里说的交互，主要是数据上的交互（还有一些其他的交互方式会在后面的文章写到）。 函数的交互C本身是没有和JavaScript进行交互的标准库的，需要用WebAssembly提供的&amp;lt;emscripten.h&amp;gt;，以及EMSCRIPTEN_KEEPALIVE来实现。比">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://loliconautomaton.github.io/images/fib.png">
+<meta property="og:updated_time" content="2019-09-26T10:03:26.141Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LoliconAutomaton&#39;s RabbitHouse">
-<meta name="twitter:description" content="LoliconAutomaton&apos;s blog">
+<meta name="twitter:title" content="C &amp;&amp; WebAssembly (2)">
+<meta name="twitter:description" content="Overview在(1)里已经讲了WebAssembly的基础，在这一篇文章里要讲的是如何在C和JavaScript之间交互。这里说的交互，主要是数据上的交互（还有一些其他的交互方式会在后面的文章写到）。 函数的交互C本身是没有和JavaScript进行交互的标准库的，需要用WebAssembly提供的&amp;lt;emscripten.h&amp;gt;，以及EMSCRIPTEN_KEEPALIVE来实现。比">
+<meta name="twitter:image" content="http://loliconautomaton.github.io/images/fib.png">
   
     <link rel="alternative" href="/" title="LoliconAutomaton&#39;s RabbitHouse" type="application/atom+xml">
   
@@ -71,40 +75,110 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/新年拯救计划/" class="archive-article-date">
-  <time datetime="2019-02-09T14:07:52.000Z" itemprop="datePublished">02-09</time>
+      <section id="main"><article id="post-CWASM2" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/CWASM2/" class="article-date">
+  <time datetime="2019-09-26T08:27:51.990Z" itemprop="datePublished">2019-09-26</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/新年拯救计划/">新年拯救计划</a>
+    <h1 class="article-title" itemprop="name">
+      C &amp;&amp; WebAssembly (2)
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>在(1)里已经讲了WebAssembly的基础，在这一篇文章里要讲的是如何在C和JavaScript之间交互。这里说的交互，主要是数据上的交互（还有一些其他的交互方式会在后面的文章写到）。</p>
+<h3 id="函数的交互"><a href="#函数的交互" class="headerlink" title="函数的交互"></a>函数的交互</h3><p>C本身是没有和JavaScript进行交互的标准库的，需要用WebAssembly提供的<code>&lt;emscripten.h&gt;</code>，以及<code>EMSCRIPTEN_KEEPALIVE</code>来实现。比较优秀的方法是定义一个头文件并且做出如下宏定义（来自github项目cpp-wasmbook)：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> EM_PORT_API</span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">if</span> defined(__EMSCRIPTEN__)</span></span><br><span class="line"><span class="meta">#    <span class="meta-keyword">include</span> <span class="meta-string">&lt;emscripten.h&gt;</span></span></span><br><span class="line"><span class="meta">#    <span class="meta-keyword">if</span> defined(__cplusplus)</span></span><br><span class="line"><span class="meta">#      <span class="meta-keyword">define</span> EM_PORT_API(rettype) extern <span class="meta-string">"C"</span> rettype EMSCRIPTEN_KEEPALIVE</span></span><br><span class="line"><span class="meta">#    <span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#      <span class="meta-keyword">define</span> EM_PORT_API(rettype) rettype EMSCRIPTEN_KEEPALIVE</span></span><br><span class="line"><span class="meta">#    <span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#    <span class="meta-keyword">if</span> defined(__cplusplus)</span></span><br><span class="line"><span class="meta">#      <span class="meta-keyword">define</span> EM_PORT_API(rettype) extern <span class="meta-string">"C"</span> rettype</span></span><br><span class="line"><span class="meta">#    <span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#      <span class="meta-keyword">define</span> EM_PORT_API(rettype) rettype</span></span><br><span class="line"><span class="meta">#    <span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<p>这样就可以使用</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">EM_PORT_API(<span class="keyword">int</span>) add(<span class="keyword">int</span> a, <span class="keyword">int</span> b) &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>来定义一些可以被JavaScript调用的函数了。编译得到对应的.js文件（不妨设为<code>base.js</code>），然后新建一个<code>add.html</code>文件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  Module = &#123;&#125;;</span></span><br><span class="line"><span class="undefined">  Module.onRuntimeInitialized = function() &#123;</span></span><br><span class="line"><span class="undefined">    console.log(Module._add(10, 20));</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"base.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在F12里就可以看到打印出了30.注意到利用在C的函数名之前加了下划线<code>_</code>.</p>
+<p>在C中也可以调用JavaScript的函数，方法是使用<code>ManagerLibrary.library</code>.一种方法是在另一个<code>pkg.js</code>中实现C里定义的函数，然后利用编译选项<code>--js-library pkj.js</code>来把定义和声明整合成一个js文件。当然你也可以在<code>base.js</code>中使用在最终的html中才会被声明和定义的函数，这样就可使用C所没有的闭包。</p>
+<h3 id="数据的交互"><a href="#数据的交互" class="headerlink" title="数据的交互"></a>数据的交互</h3><p>通常来说，C和JavaScript的数据交互有传值和传地址两种方式，其中传地址比较常见：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> g_int = <span class="number">42</span>;</span><br><span class="line"></span><br><span class="line">EM_PORT_API(<span class="keyword">int</span>*) get_int_ptr() &#123; <span class="keyword">return</span> &amp;g_int; &#125;</span><br></pre></td></tr></table></figure>
+<p>编译为js之后在html写：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ptr = Module._get_int_ptr();</span><br><span class="line"><span class="built_in">console</span>.log(Module.HEAP32[ptr &gt;&gt; <span class="number">2</span>]);</span><br></pre></td></tr></table></figure>
+<p>就可以在命令台打印出42.这里HEAP32是WASM的内置数据类型，对应了C中的<code>int</code>.除此之外WASM还有HEAPF64,等数据类型，对标了C中的double等。除了long long，其他数据类型都可以在WASM中找到内置的类型。另外，如果想要从JavaScript向C传值，直接修改数组中的地址对应的值即可。</p>
+<h3 id="Exercise：Fibonacci-n-Mod-998244353"><a href="#Exercise：Fibonacci-n-Mod-998244353" class="headerlink" title="Exercise：Fibonacci(n) Mod 998244353"></a>Exercise：Fibonacci(n) Mod 998244353</h3><blockquote>
+<p>要求：编写一个网页，第一个文本框输入$n$，点击”calculate”按钮之后，在第二个文本框输出$fibonacci(n)\pmod{998244353}$.</p>
+</blockquote>
+<p>分析：首先矩阵快速幂的部分可以写成C的内部函数，然后利用外部函数<code>solve(n)</code>和JavaScript进行值传递。涉及到html组件以后，不能把按钮的事件响应和Module的runtime写在一起，所以需要用一个函数获得Module中的<code>solve(n)</code>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">EM_PORT_API(<span class="keyword">int</span>) solve(<span class="keyword">int</span> n) &#123;</span><br><span class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">  Matrix fib;</span><br><span class="line">  fib.a[<span class="number">0</span>][<span class="number">0</span>] = fib.a[<span class="number">0</span>][<span class="number">1</span>] = fib.a[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>, fib.a[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">  ret = matPowMod(fib, n);</span><br><span class="line">  <span class="keyword">return</span> ret.a[<span class="number">0</span>][<span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中<code>matPowMod()</code>是矩阵快速幂。</p>
+<p>编译为JavaScript之后在html中写：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">dir</span>=<span class="string">"ltr"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Fibonacci(n) Mod 998244353<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"fib.js"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> wa_solve;</span></span><br><span class="line"><span class="undefined">      Module = &#123;&#125;;</span></span><br><span class="line"><span class="javascript">      Module.onRuntimeInitialized = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">        wa_solve = Module._solve;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="keyword">function</span> <span class="title">calc</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> n = <span class="built_in">parseInt</span>(<span class="built_in">document</span>.getElementById(<span class="string">"index"</span>).value);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> t = <span class="built_in">document</span>.getElementById(<span class="string">"result"</span>);</span></span><br><span class="line"><span class="undefined">        t.value = wa_solve(n);</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"index"</span> <span class="attr">value</span>=<span class="string">"0"</span> <span class="attr">height</span>=<span class="string">"100"</span> <span class="attr">width</span>=<span class="string">"300"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"answer"</span> <span class="attr">value</span>=<span class="string">"calculate"</span> <span class="attr">onclick</span>=<span class="string">"calc()"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"result"</span> <span class="attr">value</span>=<span class="string">"0"</span> <span class="attr">height</span>=<span class="string">"100"</span> <span class="attr">width</span>=<span class="string">"300"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"fib.js"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后就可以了，效果如下：</p>
+<p><img src="..\images\fib.png" alt=""></p>
 
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://loliconautomaton.github.io/CWASM2/" data-id="ck10j5vy4000ctku7hjxkmrmr" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebAssembly/">WebAssembly</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/CWASM1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">C &amp;&amp; WebAssembly (1)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<!-- LiveRe City install code -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MTk5Ni8xODU0Mw==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
+</div>
+<!-- completed City install code -->
 </section>
       
       <aside id="sidebar">
