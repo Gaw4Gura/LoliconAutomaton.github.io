@@ -368,7 +368,7 @@ body {
   font-weight: bold;
 }
 #header {
-  height: 385px;
+  height: 400px;
   position: relative;
   border-bottom: 1px solid #ddd;
 }
@@ -411,7 +411,7 @@ body {
   width: 100%;
   height: 100%;
   background: #21282e;
-  background: url("images/front.JPG") center #000;
+  background: url("images/front.PNG") center #000;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -443,7 +443,7 @@ body {
   font-size: 16px;
   line-height: 16px;
   letter-spacing: 1px;
-  color: #e0ffff;
+  color: #6a5acd;
 }
 #subtitle-wrap {
   margin-top: 16px;
