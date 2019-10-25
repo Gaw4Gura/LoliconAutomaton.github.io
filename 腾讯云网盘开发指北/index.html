@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>腾讯云网盘开发指北 | LoliconAutomaton&#39;s RabbitHouse</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Overview去年咕了一整年的科创部活动今年也要重启了。其中一个项目是腾讯云开发，也就是在微信小程序里调用腾讯云。腾讯给的培训项目是做一个网盘app。然而尴尬的是我并看不懂JavaScript，微信小程序的API也过于繁多，而大约20天之后就要开线下工坊公开讲课，因此我决定从我唯一能看懂的逻辑入手，记录一下这次的小程序开发。 另外好像贴了代码以后hexo渲染出现了奇怪的问题，因此请读者自行在笔者">
+<meta name="keywords" content="微信小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="腾讯云网盘开发指北">
+<meta property="og:url" content="http://loliconautomaton.github.io/腾讯云网盘开发指北/index.html">
+<meta property="og:site_name" content="LoliconAutomaton&#39;s RabbitHouse">
+<meta property="og:description" content="Overview去年咕了一整年的科创部活动今年也要重启了。其中一个项目是腾讯云开发，也就是在微信小程序里调用腾讯云。腾讯给的培训项目是做一个网盘app。然而尴尬的是我并看不懂JavaScript，微信小程序的API也过于繁多，而大约20天之后就要开线下工坊公开讲课，因此我决定从我唯一能看懂的逻辑入手，记录一下这次的小程序开发。 另外好像贴了代码以后hexo渲染出现了奇怪的问题，因此请读者自行在笔者">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-25T07:55:14.569Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="腾讯云网盘开发指北">
+<meta name="twitter:description" content="Overview去年咕了一整年的科创部活动今年也要重启了。其中一个项目是腾讯云开发，也就是在微信小程序里调用腾讯云。腾讯给的培训项目是做一个网盘app。然而尴尬的是我并看不懂JavaScript，微信小程序的API也过于繁多，而大约20天之后就要开线下工坊公开讲课，因此我决定从我唯一能看懂的逻辑入手，记录一下这次的小程序开发。 另外好像贴了代码以后hexo渲染出现了奇怪的问题，因此请读者自行在笔者">
+  
+    <link rel="alternative" href="/" title="LoliconAutomaton&#39;s RabbitHouse" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]--><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+</head></html>
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">LoliconAutomaton&#39;s RabbitHouse</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">你看我，多么渺小一个我，因为你有梦可做</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name="tn" type="hidden" value="bds">
+          <input name="cl" type="hidden" value="3">
+          <input name="ct" type="hidden" value="2097152">
+          <input type="hidden" name="si" value="loliconautomaton.github.io">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-腾讯云网盘开发指北" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/腾讯云网盘开发指北/" class="article-date">
+  <time datetime="2019-10-24T17:54:58.084Z" itemprop="datePublished">2019-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/微信小程序/">微信小程序</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      腾讯云网盘开发指北
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>去年咕了一整年的科创部活动今年也要重启了。其中一个项目是腾讯云开发，也就是在微信小程序里调用腾讯云。腾讯给的培训项目是做一个网盘app。然而尴尬的是我并看不懂JavaScript，微信小程序的API也过于繁多，而大约20天之后就要开线下工坊公开讲课，因此我决定从我唯一能看懂的逻辑入手，记录一下这次的小程序开发。</p>
+<p>另外好像贴了代码以后hexo渲染出现了奇怪的问题，因此请读者自行在笔者github上浏览代码配合本文食用。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先你需要一个<a href="https://mp.weixin.qq.com/wxopen/waregister?action=step1" target="_blank" rel="noopener">注册一个小程序</a>，注册的时候直接绑定到自己的微信号即可，可以在<a href="https://mp.weixin.qq.com/cgi-bin/home?t=home/index&amp;lang=zh_CN" target="_blank" rel="noopener">后台</a>管理小程序，之后需要用到小程序的AppID就是在这里看的。接下来就是要<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html" target="_blank" rel="noopener">下载微信开发者工具</a>，根据不同的平台选择即可，我这里用的是Windows X64版本。可以在<a href="https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html" target="_blank" rel="noopener">官方文档</a>查看云开发相关的知识。</p>
+<h3 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h3><p>一个小程序的结构可以分为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-miniprogram-1</span><br><span class="line">--pages</span><br><span class="line">--utils</span><br><span class="line">--app.js</span><br><span class="line">--app.json</span><br><span class="line">--app.wxss</span><br><span class="line">--project.config.json</span><br><span class="line">--sitemap.json</span><br></pre></td></tr></table></figure>
+<p>其中pages是这个小程序的页面，utils是一些杂项（比如并发上传文件的Promise就在这里面），<code>app.js</code>等就是小程序主文件了。</p>
+<p>每个page的文件结构又可以分为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-index</span><br><span class="line">--index.js</span><br><span class="line">--index.json</span><br><span class="line">--index.wxml</span><br><span class="line">--index.wxss</span><br></pre></td></tr></table></figure>
+<p>和一般的网页一样，微信小程序是利用CSS（有改进和封装，称为WXSS）配置网页风格，然后利用WXML调用JavaScript里实现的功能来完成一个界面的功能。而json文件则是用来配置小程序当前页面的基本信息的。</p>
+<p>云网盘的主要文件结构是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-miniprogram-1</span><br><span class="line">--images</span><br><span class="line">--pages</span><br><span class="line">---folder</span><br><span class="line">---album</span><br><span class="line">---files</span><br><span class="line">---photos</span><br><span class="line">---user</span><br><span class="line">--utils</span><br><span class="line">--app.js</span><br><span class="line">--app.json</span><br><span class="line">--app.wxss</span><br><span class="line">--project.config.json</span><br><span class="line">--sitemap.json</span><br></pre></td></tr></table></figure>
+<h3 id="腾讯云"><a href="#腾讯云" class="headerlink" title="腾讯云"></a>腾讯云</h3><p>大概就是<code>wx.cloud</code>所代表的API了，最常用的是云储存<code>wx.cloud.database()</code>以及获取文件在云端的储存地址。只有2.2.3版本及以上的开发者工具才支持腾讯云，并且你需要在云开发控制台开启一下云开发功能，写一个环境（随意），这个是你着整个项目开发所代表的腾讯云开发环境：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wx.cloud.init(&#123;</span><br><span class="line">  env: <span class="string">''</span>, <span class="comment">// 这里写你自己定义的环境</span></span><br><span class="line">  traceUser: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> db = wx.cloud.database()</span><br></pre></td></tr></table></figure>
+<p>来获取云储存，可以用<code>collection</code>某个记录的<code>get</code>、<code>add</code>、<code>update</code>等多种功能</p>
+<h3 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h3><p><code>app.js</code>的主要任务是部署整个程序，系统会默认帮您生成好获得用户信息的代码，需要的时候直接调用即可。另外，整个小程序需要用到的全局变量也是定义在这个文件的<code>globalData</code>里的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">globalData: &#123;</span><br><span class="line">  hasUser: <span class="literal">false</span>,</span><br><span class="line">  hasUserInfo: <span class="literal">false</span>,</span><br><span class="line">  userInfo: <span class="literal">null</span>,</span><br><span class="line">  checkResult: <span class="literal">null</span>,</span><br><span class="line">  code: <span class="literal">null</span>,</span><br><span class="line">  openid: <span class="literal">null</span>,</span><br><span class="line">  flag: <span class="number">0</span>,</span><br><span class="line">  nickName: <span class="string">''</span>,</span><br><span class="line">  allData: &#123;</span><br><span class="line">    albums: [],</span><br><span class="line">    folders: []</span><br><span class="line">  &#125;,</span><br><span class="line">  id: <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然因为我不会JavaScript的原因，这里面只用了最基本的几个变量。</p>
+<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><p>这些文件里写了页面的逻辑和配置，最适合用来读懂页面的调用关系与逻辑，以<code>app.json</code>为例：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"pages"</span>: [</span><br><span class="line">    <span class="string">"pages/album/album"</span>,</span><br><span class="line">    <span class="string">"pages/files/files"</span>,</span><br><span class="line">    <span class="string">"pages/files/add"</span>,</span><br><span class="line">    <span class="string">"pages/folder/folder"</span>,</span><br><span class="line">    <span class="string">"pages/photos/photos"</span>,</span><br><span class="line">    <span class="string">"pages/photos/add"</span>,</span><br><span class="line">    <span class="string">"pages/user/user"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"window"</span>: &#123;</span><br><span class="line">    <span class="attr">"backgroundTextStyle"</span>: <span class="string">"light"</span>,</span><br><span class="line">    <span class="attr">"navigationBarBackgroundColor"</span>: <span class="string">"#fff"</span>,</span><br><span class="line">    <span class="attr">"navigationBarTitleText"</span>: <span class="string">"WeChat"</span>,</span><br><span class="line">    <span class="attr">"navigationBarTextStyle"</span>: <span class="string">"black"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"tabBar"</span> : &#123;</span><br><span class="line">    <span class="attr">"selectedColor"</span>: <span class="string">"#07C160"</span>,</span><br><span class="line">    <span class="attr">"list"</span> : [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">"pagePath"</span>: <span class="string">"pages/folder/folder"</span>,</span><br><span class="line">        <span class="attr">"iconPath"</span>: <span class="string">"images/file.png"</span>,</span><br><span class="line">        <span class="attr">"selectedIconPath"</span>: <span class="string">"images/file-active.png"</span>,</span><br><span class="line">        <span class="attr">"text"</span>: <span class="string">"文件"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">"pagePath"</span>: <span class="string">"pages/album/album"</span>,</span><br><span class="line">        <span class="attr">"iconPath"</span>: <span class="string">"images/photo.png"</span>,</span><br><span class="line">        <span class="attr">"selectedIconPath"</span>: <span class="string">"images/photo-active.png"</span>,</span><br><span class="line">        <span class="attr">"text"</span>: <span class="string">"相册"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">"pagePath"</span>: <span class="string">"pages/user/user"</span>,</span><br><span class="line">        <span class="attr">"iconPath"</span>: <span class="string">"images/user.png"</span>,</span><br><span class="line">        <span class="attr">"selectedIconPath"</span>: <span class="string">"images/user-active.png"</span>,</span><br><span class="line">        <span class="attr">"text"</span>: <span class="string">"用户"</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"sitemapLocation"</span>: <span class="string">"sitemap.json"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>清楚地写着页面的逻辑以及布局信息。其中<code>tabBar</code>就是最下面的导航栏。</p>
+<h3 id="用户登录"><a href="#用户登录" class="headerlink" title="用户登录"></a>用户登录</h3><p>我们都知道一般的小程序需要你用微信号登录并且获取信息，这就是页面<code>/pages/user/user</code>的功能。在这里，我们需要定义用户信息<code>userInfo</code>，以及利用API<code>wx.canIUse(&#39;button.open-type.getUserInfo&#39;)</code>来获得用户信息。</p>
+<p>小程序的每个页面都以<code>Page({})</code>包裹整体的内容，里面的第一个函数就是<code>onLoad()</code>，还有一个<code>onShow()</code>和这个功能非常类似，不过<code>onLoad()</code>只会在第一次切到这个页面的时候加载，而<code>onShow()</code>会在每次切到这个页面的时候加载。</p>
+<p>user页面的逻辑比较简单，大概就是调用一些API或者是已经帮你写好的回调函数来判断用户是否登录以及获取登录用户的信息，如果用户是第一次登录的话就把用户信息写进数据库。通常来说上传数据是一个调用了Promise对象的异步请求，因此我们要利用<code>async/await</code>来实现这个功能：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> addUser(user) &#123;</span><br><span class="line">  <span class="keyword">if</span> (app.globalData.hasUser) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> db = wx.cloud.database();</span><br><span class="line">  <span class="keyword">let</span> result = <span class="keyword">await</span> db.collection(<span class="string">'user'</span>).add(&#123;</span><br><span class="line">    data: &#123;</span><br><span class="line">      nickName: user.nickName,</span><br><span class="line">      albums: [],</span><br><span class="line">      folders: []</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  app.globalData.nickName = user.nickName;</span><br><span class="line">  app.globalData.id = result._id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第六行代码意味着向数据集<code>user</code>写入新的信息。腾讯默认的用户昵称就是<code>nickName</code>，不能把变量写成<code>nickname</code>，否则会出现<code>undefined</code>的错误。另外所有的 数组一定要在这里初始化，否则也会变成<code>undefined</code>.</p>
+<p>另外这个界面第一次出现了一个神奇的变量叫做<code>e</code>，好像什么都没有定义就能使用<code>e.detail</code>（事实上后面还会有更多），我去查了一下这好像也算是微信官方提供的一个API吧，用就行了。</p>
+<p>另外在整个程序的第一行是<code>const app = getApp();</code>，这个函数可以获得主文件<code>app.js</code>的内容，或者说现在这个<code>app</code>变量就代表了你的小程序。</p>
+<p>页面的WXML文件也比较简单，这种语言和HTML大体相同，利用标签<code>&lt;view&gt;</code>定义可视化组件，比较有趣的是它对数据（无论是JS或是哪里的）的引用是把变量名写在两个花括号里。</p>
+<h3 id="album和folder"><a href="#album和folder" class="headerlink" title="album和folder"></a>album和folder</h3><p>网盘小程序比较简单，只有三个主页面，分别是用户信息、相册以及文件夹。其中相册对应的就是album，文件夹对应的就是folder，两个页面的逻辑是相似的，并且文件结构也基本一样（标准的四个文件）。</p>
+<p>首先在这两个页面都应该先检查用户是否登录，如果没有的话就要switch到登录界面。</p>
+<p>除此之外应该先考虑的功能就是新建相册和新建文件夹，这里就需要新建一个按钮，用<code>bindtap</code>属性和JavaScript里写好的单击事件进行连接，这里利用一个formSubmit函数和按钮绑定：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> formSubmit(e) &#123;</span><br><span class="line">  <span class="keyword">if</span> (e.detail.index == <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> albumName = <span class="keyword">this</span>.data.inputValue;</span><br><span class="line">    <span class="keyword">if</span> (!!albumName) &#123;</span><br><span class="line">      app.globalData.allData.albums.push(&#123;<span class="attr">albumName</span>: albumName, <span class="attr">photos</span>: []&#125;);</span><br><span class="line">      <span class="keyword">let</span> result = <span class="keyword">await</span> db.collection(<span class="string">'user'</span>).doc(app.globalData.id).update(&#123;</span><br><span class="line">        data: &#123;</span><br><span class="line">          albums: cmd.set(app.globalData.allData.albums),</span><br><span class="line">          folders: cmd.set(app.globalData.allData.folders)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">        dialogShow: <span class="literal">false</span></span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      wx.reLaunch(&#123;</span><br><span class="line">        url: <span class="string">'/pages/album/album'</span></span><br><span class="line">      &#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">        error: <span class="string">'相册名不能为空'</span></span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">      dialogShow: <span class="literal">false</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于相册和文件在我们的定义里其实只是两个数组，因此我们获取到用户输入的名称之后只用在这个数组里利用push方法添加一个元素，然后把记录写进数据库即可。有一些API是WEUI组件的，这里就不赘述了。另外新建完之后不能一直保持新建的页面，因此需要利用<code>reLaunch</code>功能刷新一下界面。</p>
+<p>另外还有一个功能需要实现就是对于已经存在的相册或者文件夹需要把它展示出来，这个地方相册会比文件夹复杂一点，因为相册需要确定一个封面。这里出于简单考虑就用最新的一张照片作为封面。利用<code>wx.cloud.getTempFileURL</code>获取文件的位置，然后根据WXSS里的设置利用WXML部署到页面上，具体的做法就是在<code>view</code>标签里利用引用来展示获得的URL.这里需要用到WEUI的组件cells（表单）、mp-dialog（弹出对话）以及toptips（顶部提示）：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"page-content"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"list-content"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">block</span> <span class="attr">wx:for</span>=<span class="string">"&#123;&#123;albums&#125;&#125;"</span> <span class="attr">wx:key</span>=<span class="string">"id"</span> <span class="attr">wx:for-index</span>=<span class="string">"idx"</span> <span class="attr">wx:for-item</span>=<span class="string">"album"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">navigator</span> <span class="attr">url</span>=<span class="string">"/pages/photos/photos?id=&#123;&#123;idx&#125;&#125;"</span> <span class="attr">class</span>=<span class="string">"album-item"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"album &#123;&#123;idx%2==0?'album-left':'album-right'&#125;&#125;"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"album-photo"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">""</span> <span class="attr">style</span>=<span class="string">"background-image: url(&#123;&#123;album.coverURL&#125;&#125;)"</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"album-info"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"album-name"</span>&gt;</span>&#123;&#123;album.albumName&#125;&#125;<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"album-total"</span>&gt;</span>&#123;&#123;album.photos.length&#125;&#125; 张<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">navigator</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"addbutton"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"add-item"</span> <span class="attr">bindtap</span>=<span class="string">"addAlbum"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">image</span> <span class="attr">class</span>=<span class="string">"add-icon"</span> <span class="attr">src</span>=<span class="string">"/images/add.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mp-dialog</span> <span class="attr">title</span>=<span class="string">"新建相册"</span> <span class="attr">show</span>=<span class="string">"&#123;&#123;dialogShow&#125;&#125;"</span> <span class="attr">bindbuttontap</span>=<span class="string">"formSubmit"</span> <span class="attr">buttons</span>=<span class="string">"&#123;&#123;buttons&#125;&#125;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"item-add"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"item-name"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">placeholder</span>=<span class="string">"请输入相册名称"</span> <span class="attr">auto-focus</span> <span class="attr">value</span>=<span class="string">"&#123;&#123;inputValue&#125;&#125;"</span> <span class="attr">bindinput</span>=<span class="string">"keyInput"</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mp-dialog</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mp-toptips</span> <span class="attr">msg</span>=<span class="string">"&#123;&#123;error&#125;&#125;"</span> <span class="attr">type</span>=<span class="string">"error"</span> <span class="attr">show</span>=<span class="string">"&#123;&#123;error&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">mp-toptips</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以看到第一部分就是部署已经有的相册，这里都是微信提供的内置属性；第二部分是“新建”的按钮，绑定了我们刚刚写好的<code>formSubmit</code>，最后一个部分就是错误提示，例如“相册名称不能为空”。</p>
+<h3 id="photos和files"><a href="#photos和files" class="headerlink" title="photos和files"></a>photos和files</h3><p>这两个比较复杂的页面，因为还需要有添加功能，因此一共有八个文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-photos</span><br><span class="line">--add.js</span><br><span class="line">--add.json</span><br><span class="line">--add.wxml</span><br><span class="line">--add.wxss</span><br><span class="line">--photos.js</span><br><span class="line">--photos.json</span><br><span class="line">--photos.wxml</span><br><span class="line">--photos.wxss</span><br></pre></td></tr></table></figure>
+<p>其中以<code>photos</code>命名的文件和上一个页面差不多，也是负责部署页面基本信息的，而以<code>add</code>命名的文件则负责新的上传页面的部署。</p>
+<h4 id="photos-js"><a href="#photos-js" class="headerlink" title="photos.js"></a>photos.js</h4><p>看起来很复杂，但其实有了之前两个页面的开发经验，<code>photos.js</code>是可以很快地预想到大致的结构的：从数据库获得信息以及写信息到数据库：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> getPhotos() &#123;</span><br><span class="line">  <span class="keyword">const</span> userinfo = <span class="keyword">await</span> db.collection(<span class="string">'user'</span>).doc(app.globalData.id).get();</span><br><span class="line">  <span class="keyword">const</span> albums = userinfo.data.albums;</span><br><span class="line">  <span class="keyword">const</span> photos = albums[<span class="keyword">this</span>.albumID].photos;</span><br><span class="line"></span><br><span class="line">  app.globalData.allData.albums[<span class="keyword">this</span>.albumID].photos = photos;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> fileList = photos.map(<span class="function"><span class="params">photo</span> =&gt;</span> photo.fileID);</span><br><span class="line">  <span class="keyword">const</span> photoIds = [];</span><br><span class="line">  <span class="keyword">const</span> realUrlRes = <span class="keyword">await</span> wx.cloud.getTempFileURL(&#123;fileList&#125;);</span><br><span class="line">  <span class="keyword">const</span> realUrls = realUrlRes.fileList.map(<span class="function"><span class="params">file</span> =&gt;</span> &#123;</span><br><span class="line">    photoIds.push(file.fileID);</span><br><span class="line">    <span class="keyword">return</span> file.tempFileURL;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">    albumIndex: <span class="keyword">this</span>.albumID,</span><br><span class="line">    photos: realUrls,</span><br><span class="line">    photoIds</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>事实上可以看到代码也是利用<code>await db.collection(&#39;user&#39;)</code>来获取数据库里的信息，并且用<code>update()</code>方法来更新的。在编写界面的时候唯一需要注意的地方就是应该及时更新全局变量的信息，并且所使用的的变量名一定要和数据库里的记录一致，否则又会出现<code>undefined</code>.</p>
+<p>在培训的时候删除照片的代码被特意注释掉了，和单纯的获取照片比起来确实麻烦一点：首先利用API获取被删除的照片在数组里的编号，然后利用条件语句把其他的照片单独拿出来重新赋值给全局变量里的照片数组，并且更新数据库保存刚刚的操作：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> deleteFile(idx) &#123;</span><br><span class="line">  <span class="keyword">const</span> fileID = <span class="keyword">this</span>.data.photoIds[idx];</span><br><span class="line">  <span class="keyword">const</span> photos = app.globalData.allData.albums[<span class="keyword">this</span>.albumID].photos;</span><br><span class="line">  <span class="keyword">const</span> newFileIds = <span class="keyword">this</span>.data.photoIds.filter(<span class="function"><span class="params">id</span> =&gt;</span> id !== fileID);</span><br><span class="line">  <span class="keyword">const</span> newPhotos = photos.filter(<span class="function"><span class="params">photo</span> =&gt;</span> !!~newFileIds.indexOf(photo.fileID));</span><br><span class="line"></span><br><span class="line">  app.globalData.allData.albums[<span class="keyword">this</span>.albumID].photos = newPhotos;</span><br><span class="line"></span><br><span class="line">  db.collection(<span class="string">'user'</span>).doc(app.globalData.id).update(&#123;</span><br><span class="line">    data: &#123;</span><br><span class="line">      albums: cmd.set(app.globalData.allData.albums)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">    wx.navigateBack();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>WXML里的内容和之前的两个页面也比较像，分为布局照片和布局按钮两个部分。</p>
+<h4 id="add-js"><a href="#add-js" class="headerlink" title="add.js"></a>add.js</h4><p>这个文件的逻辑就是整个app里最复杂的逻辑了。首先因为是需要提交的，因此我们还是需要一个<code>formSubmit</code>事件响应来和点击事件对应，但是由于照片或者文件一次可以上传许多，因此需要用Promise实现的一些方法来实现并发上传，Promise的定义在<code>utils.js</code>里：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getImageInfo = <span class="function"><span class="params">src</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  wx.getImageInfo(&#123;</span><br><span class="line">    src,</span><br><span class="line">    success: (&#123;</span><br><span class="line">      path,</span><br><span class="line">      width,</span><br><span class="line">      height</span><br><span class="line">    &#125;) =&gt; &#123;</span><br><span class="line">      resolve(&#123;</span><br><span class="line">        path,</span><br><span class="line">        width,</span><br><span class="line">        height</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    fail: reject</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>当然我看不懂JavaScript，因此也只是比较机械地复制粘贴。大概就是new一个Promise对象，成功就返回图片的路径和宽高吧，然后就是在程序里新建uploadTask利用Promise去上传文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">formSubmit(e) &#123;</span><br><span class="line">  wx.showLoading(&#123;</span><br><span class="line">    title: <span class="string">'加载中'</span>,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> uploadTasks = <span class="keyword">this</span>.data.photosNew.map(<span class="function"><span class="params">item</span> =&gt;</span> <span class="keyword">this</span>.uploadPhoto(item.src));</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Promise</span>.all(uploadTasks).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.addPhotos(result, e.detail.value.desc);</span><br><span class="line">    wx.hideLoading();</span><br><span class="line">  &#125;).catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    wx.hideLoading();</span><br><span class="line">    wx.showToast(&#123;</span><br><span class="line">      title: <span class="string">'图片上传错误'</span>,</span><br><span class="line">      icon: <span class="string">'error'</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从相册选择照片以及预览照片都有API的支持，直接去官方文档查表即可（比如chooseImage和chooseMessageFile），而上传照片也是和新建相册一样的数据库操作，至此app大部分的工作已经完成了，只剩最后的WXML文件了。当然，这个WXML比较长，因为需要在这里部署的组件非常多：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"photo-add"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">form</span> <span class="attr">bindsubmit</span>=<span class="string">"formSubmit"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"desc"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">"desc"</span> <span class="attr">placeholder</span>=<span class="string">"描述（可以不写）"</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"weui-cells"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"weui-cell"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"weui-cell__bd"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"weui-uploader"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"weui-uploader__hd"</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"weui-uploader__title"</span>&gt;</span>点击可预览照片<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"weui-uploader__info"</span>&gt;</span>支持从手机相册选择照片<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"weui-uploader__bd"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"weui-uploader__files"</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">block</span> <span class="attr">wx:for</span>=<span class="string">"&#123;&#123;photosNew&#125;&#125;"</span> <span class="attr">wx:for-index</span>=<span class="string">"idx"</span> <span class="attr">wx:key</span>=<span class="string">"&#123;&#123;idx&#125;&#125;"</span> <span class="attr">wx:for-item</span>=<span class="string">"image"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"weui-uploader__file"</span>&gt;</span></span><br><span class="line">                      <span class="tag">&lt;<span class="name">image</span> <span class="attr">class</span>=<span class="string">"weui-uploader__img"</span> <span class="attr">data-src</span>=<span class="string">"&#123;&#123;image&#125;&#125;"</span> <span class="attr">bindtap</span>=<span class="string">"previewImage"</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;image.src&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">                      <span class="tag">&lt;<span class="name">image</span> <span class="attr">class</span>=<span class="string">"cancel"</span> <span class="attr">src</span>=<span class="string">"/images/cancel.png"</span> <span class="attr">bindtap</span>=<span class="string">"cancel"</span> <span class="attr">data-index</span>=<span class="string">"&#123;&#123;idx&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"weui-uploader__input-box"</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;photosNew.length &lt; 3&#125;&#125;"</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"weui-uploader__input"</span> <span class="attr">bindtap</span>=<span class="string">"chooseImage"</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"btn-box"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">form-type</span>=<span class="string">"submit"</span>&gt;</span>提交<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里用到的class大部分都是WEUI的组件，因此真正的逻辑还是在for循环里，也主要是引用JS里的变量。</p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>个人认为网盘小程序逻辑相对简单清晰，JavaScript+HTML/CSS也并不是那种比较难学的语言，因此确实非常适合用来短时间学习微信小程序开发。不过鉴于复变函数与积分变换期末考试临近，暂时也只能做到这样了，比较可惜，功能也只实现了最简单的一些。项目的源代码在<a href="https://github.com/LoliconAutomaton/tencentCloudDesc" target="_blank" rel="noopener">这里</a>，由于WEUI太大了就没有上传，需要自己下载。</p>
+
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://loliconautomaton.github.io/腾讯云网盘开发指北/" data-id="ck25p3u0k004am8u7phyzcvab" class="article-share-link">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/WF2019A/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">World Finals 2019 A</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<!-- LiveRe City install code -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MTk5Ni8xODU0Mw==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
+</div>
+<!-- completed City install code -->
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ACG/">ACG</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/AtCoder/">AtCoder</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/BZOJ/">BZOJ</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CodeChef/">CodeChef</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Codeforces/">Codeforces</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hello-world/">Hello, world!</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Regional/">Regional</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UOJ/">UOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/冻态硅化/">冻态硅化</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/分块/">分块</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/奶牛题/">奶牛题</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/字符串/">字符串</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/寒假作业/">寒假作业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/微信小程序/">微信小程序</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数论/">数论</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文学/">文学</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂文/">杂文</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/游记/">游记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/贪心/">贪心</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/01背包/">01背包</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BZOJ/">BZOJ</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDQ分治/">CDQ分治</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CodeChef/">CodeChef</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Codeforces/">Codeforces</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hello/">Hello</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP/">KMP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LCA/">LCA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regional/">Regional</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UOJ/">UOJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebAssembly/">WebAssembly</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kNN/">kNN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/min-25筛/">min_25筛</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/">set</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/书评/">书评</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分答案/">二分答案</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/冻态硅化/">冻态硅化</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/出题/">出题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分块/">分块</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/容斥/">容斥</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分/">差分</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/平衡树/">平衡树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/影评/">影评</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/思维/">思维</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打表/">打表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扫描线/">扫描线</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓扑排序/">拓扑排序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数位dp/">数位dp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数论/">数论</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日常/">日常</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时评/">时评</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力/">暴力</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/期望/">期望</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/期望dp/">期望dp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/构造/">构造</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树/">树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树链剖分/">树链剖分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/毒瘤/">毒瘤</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/法法塔/">法法塔</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游记/">游记</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/滑动窗口/">滑动窗口</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/番剧/">番剧</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社会/">社会</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/离散化/">离散化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/积性函数/">积性函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线段树/">线段树</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/组合数学/">组合数学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/置换/">置换</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莫比乌斯反演/">莫比乌斯反演</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莫队算法/">莫队算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高精度/">高精度</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/01背包/" style="font-size: 10px;">01背包</a> <a href="/tags/BZOJ/" style="font-size: 12px;">BZOJ</a> <a href="/tags/CDQ分治/" style="font-size: 10px;">CDQ分治</a> <a href="/tags/CodeChef/" style="font-size: 12px;">CodeChef</a> <a href="/tags/Codeforces/" style="font-size: 20px;">Codeforces</a> <a href="/tags/Hello/" style="font-size: 10px;">Hello</a> <a href="/tags/KMP/" style="font-size: 12px;">KMP</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Regional/" style="font-size: 14px;">Regional</a> <a href="/tags/UOJ/" style="font-size: 10px;">UOJ</a> <a href="/tags/WebAssembly/" style="font-size: 12px;">WebAssembly</a> <a href="/tags/kNN/" style="font-size: 10px;">kNN</a> <a href="/tags/min-25筛/" style="font-size: 10px;">min_25筛</a> <a href="/tags/set/" style="font-size: 10px;">set</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/二分答案/" style="font-size: 12px;">二分答案</a> <a href="/tags/冻态硅化/" style="font-size: 16px;">冻态硅化</a> <a href="/tags/出题/" style="font-size: 10px;">出题</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/容斥/" style="font-size: 10px;">容斥</a> <a href="/tags/差分/" style="font-size: 14px;">差分</a> <a href="/tags/平衡树/" style="font-size: 10px;">平衡树</a> <a href="/tags/影评/" style="font-size: 12px;">影评</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/思维/" style="font-size: 12px;">思维</a> <a href="/tags/打表/" style="font-size: 10px;">打表</a> <a href="/tags/扫描线/" style="font-size: 10px;">扫描线</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/数位dp/" style="font-size: 10px;">数位dp</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/日常/" style="font-size: 10px;">日常</a> <a href="/tags/时评/" style="font-size: 10px;">时评</a> <a href="/tags/暴力/" style="font-size: 10px;">暴力</a> <a href="/tags/期望/" style="font-size: 10px;">期望</a> <a href="/tags/期望dp/" style="font-size: 10px;">期望dp</a> <a href="/tags/构造/" style="font-size: 12px;">构造</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/模拟/" style="font-size: 10px;">模拟</a> <a href="/tags/毒瘤/" style="font-size: 10px;">毒瘤</a> <a href="/tags/法法塔/" style="font-size: 10px;">法法塔</a> <a href="/tags/游记/" style="font-size: 18px;">游记</a> <a href="/tags/滑动窗口/" style="font-size: 12px;">滑动窗口</a> <a href="/tags/番剧/" style="font-size: 14px;">番剧</a> <a href="/tags/社会/" style="font-size: 10px;">社会</a> <a href="/tags/离散化/" style="font-size: 10px;">离散化</a> <a href="/tags/积性函数/" style="font-size: 10px;">积性函数</a> <a href="/tags/线段树/" style="font-size: 16px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 10px;">组合数学</a> <a href="/tags/置换/" style="font-size: 10px;">置换</a> <a href="/tags/莫比乌斯反演/" style="font-size: 10px;">莫比乌斯反演</a> <a href="/tags/莫队算法/" style="font-size: 10px;">莫队算法</a> <a href="/tags/贪心/" style="font-size: 12px;">贪心</a> <a href="/tags/高精度/" style="font-size: 10px;">高精度</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019.10</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019.09</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019.08</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019.07</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019.06</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019.05</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019.04</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019.03</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2019.02</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019.01</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/腾讯云网盘开发指北/">腾讯云网盘开发指北</a>
+          </li>
+        
+          <li>
+            <a href="/WF2019A/">World Finals 2019 A</a>
+          </li>
+        
+          <li>
+            <a href="/CWASM2/">C &amp;&amp; WebAssembly (2)</a>
+          </li>
+        
+          <li>
+            <a href="/CWASM1/">C &amp;&amp; WebAssembly (1)</a>
+          </li>
+        
+          <li>
+            <a href="/Gym101982部分题解/">Gym101982部分题解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="https://zhuanlan.zhihu.com/galahad" target="_blank">笔者知乎</a>
+          </li>
+        
+          <li>
+            <a href="http://blog.flyinthesky.win/" target="_blank">FlyInTheSky</a>
+          </li>
+        
+          <li>
+            <a href="https://isecloud.github.io/" target="_blank">Secloud</a>
+          </li>
+        
+          <li>
+            <a href="https://herano.github.io/" target="_blank">HeRaNO@UESTC</a>
+          </li>
+        
+          <li>
+            <a href="https://blog.zhaoyiping.xyz/" target="_blank">NWPU_Zhaoyiping</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+  
+    <div>
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="86" src="//music.163.com/outchain/player?type=2&id=490182455&auto=1&height=66"></iframe>
+    </div>
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 LoliconAutomaton<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a><br>
+      
+      <span id="busuanzi_container_site_pv">
+          总访问量 <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_pv"></span></a> 次
+        </span>
+        <span id="busuanzi_container_site_uv">
+          <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_uv"></span></a> 人.
+        </span>
+        
+        
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"></a>
+</div>
+
+<!-- totop end -->
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
